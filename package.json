@@ -1,4 +1,5 @@
 {
+
   "name": "web-dev",
   "version": "1.0.0",
   "description": "Web Dev at Northeastern University",
@@ -15,4 +16,5 @@
   },
   "author": "Jose G. Annunziato",
   "license": "ISC"
+
 }
