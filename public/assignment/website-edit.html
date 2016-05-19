@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet"/>
-    <title>Profile</title>
+    <title>Website edit</title>
 </head>
 <body>
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-inner">
+            <p class="navbar-text pull-left">
+                <a href="website-list.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left">
+                    </span>
+                </a>
+            </p>
             <a class="navbar-brand" href="#">
-                Profile
+                Edit Website
             </a>
             <p class="navbar-text pull-right">
-                <a href="website-list.html" class="navbar-link">
-          <span class="glyphicon glyphicon-ok">
-          </span>
-                </a>
+            <a href="website-list.html" class="navbar-link">
+                <span class="glyphicon glyphicon-ok">
+                </span>
+            </a>
             </p>
         </div>
     </div>
@@ -27,28 +32,19 @@
 <div class="container">
     <form>
         <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Username">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name">
         </div>
         <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" placeholder="Description" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input type="text" class="form-control" id="first-name" placeholder="Alice">
-        </div>
-        <div class="form-group">
-            <label for="last-name">Last Name</label>
-            <input type="text" class="form-control" id="last-name" placeholder="Wonderland">
+            <a href="login.html" class="btn btn-danger btn-block">Delete</a>
         </div>
     </form>
-
-    <a class="btn btn-primary btn-block"
-       href="website-list.html">Websites</a>
-    <a class="btn btn-danger  btn-block"
-       href="login.html">Logout</a>
 </div>
+
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
         <div class="row navbar-text">
