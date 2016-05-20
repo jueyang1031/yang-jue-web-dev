@@ -6,20 +6,24 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet"/>
-
-    <title>Profile</title>
+    <link href="../css/style.css" rel="stylesheet"/>
+    <title>Widget youtube</title>
 </head>
 <body>
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-inner">
+            <p class="navbar-text pull-left">
+                <a href="widget-chooser.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left">
+                    </span>
+                </a>
+            </p>
             <a class="navbar-brand" href="#">
-                Profile
+                Widget Edit
             </a>
             <p class="navbar-text pull-right">
-                <a href="website-list.html" class="navbar-link">
+                <a href="widget-chooser.html" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -29,39 +33,34 @@
 </nav>
 
 <div class="container">
-    <div class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Success!</strong> Your profile was saved.
-    </div>
     <form>
         <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Username">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="">
         </div>
         <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
+            <label for="text">Text</label>
+            <input type="text" class="form-control" id="text" placeholder="">
         </div>
         <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input type="text" class="form-control" id="first-name" placeholder="Alice">
+            <label for="url">URL</label>
+            <input type="text" class="form-control" id="url" placeholder="">
         </div>
         <div class="form-group">
-            <label for="last-name">Last Name</label>
-            <input type="text" class="form-control" id="last-name" placeholder="Wonderland">
+            <label for="width">Width</label>
+            <input type="text" class="form-control" id="width" placeholder="100%">
+        </div>
+        <div class="form-group">
+            <a href="widget-chooser.html" class="btn btn-danger btn-block">Delete</a>
         </div>
     </form>
-
-    <a class="btn btn-primary btn-block"
-       href="website-list.html">Websites</a>
-    <a class="btn btn-danger  btn-block"
-       href="login.html">Logout</a>
 </div>
+
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
         <div class="row navbar-text">
             <div class="col-xs-offset-11 text-center ">
-                <a href="#">
+                <a href="../user/profile.html">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>

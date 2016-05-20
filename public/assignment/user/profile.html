@@ -6,24 +6,20 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet"/>
-    <title>Page list</title>
+    <link href="../css/style.css" rel="stylesheet"/>
+
+    <title>Profile</title>
 </head>
 <body>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-inner">
-            <p class="navbar-text pull-left">
-                <a href="page-list.html" class="navbar-link">
-                    <span class="glyphicon glyphicon-chevron-left">
-                    </span>
-                </a>
-            </p>
             <a class="navbar-brand" href="#">
-                New Page
+                Profile
             </a>
             <p class="navbar-text pull-right">
-                <a href="page-list.html" class="navbar-link">
+                <a href="#" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -33,29 +29,44 @@
 </nav>
 
 <div class="container">
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Success!</strong> Your profile was saved.
+    </div>
     <form>
         <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Name">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Username">
         </div>
         <div class="form-group">
-            <label for="description">Description</label>
-            <input type="text" class="form-control" id="description" placeholder="Name">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
+        </div>
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" class="form-control" id="first-name" placeholder="Alice">
+        </div>
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" class="form-control" id="last-name" placeholder="Wonderland">
         </div>
     </form>
-</div>
 
+    <a class="btn btn-primary btn-block"
+       href="../website/website-list.html">Websites</a>
+    <a class="btn btn-danger  btn-block"
+       href="login.html">Logout</a>
+</div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
         <div class="row navbar-text">
             <div class="col-xs-offset-11 text-center ">
-                <a href="profile.html">
+                <a href="#">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>
         </div>
     </div>
 </nav>
-
 </body>
 </html>

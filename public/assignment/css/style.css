@@ -4,4 +4,28 @@ input.form-control {
 
 body {
     padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.jga-widget-tool {
+    position: absolute;
+    right: 15px;
+    background-color: white;
+    padding-left: 3px;
+    padding-bottom: 2px;
+    border-bottom-left-radius: 3px;
+    opacity: 0.8;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 0px solid #ddd;
+}
+
+a#img {
+    text-align: left;
 }

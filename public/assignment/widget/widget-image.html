@@ -6,26 +6,26 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet"/>
-    <title>Page edit</title>
+    <link href="../css/style.css" rel="stylesheet"/>
+    <title>Widget image</title>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-inner">
             <p class="navbar-text pull-left">
-                <a href="page-list.html" class="navbar-link">
+                <a href="widget-chooser.html" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left">
                     </span>
                 </a>
             </p>
             <a class="navbar-brand" href="#">
-                Edit Page
+                Widget Edit
             </a>
             <p class="navbar-text pull-right">
-                <a href="page-list.html" class="navbar-link">
-                <span class="glyphicon glyphicon-ok">
-                </span>
+                <a href="widget-chooser.html" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
                 </a>
             </p>
         </div>
@@ -36,14 +36,29 @@
     <form>
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Name">
+            <input type="text" class="form-control" id="name" placeholder="name" value="card">
         </div>
         <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" placeholder="Name">
+            <label for="text">Text</label>
+            <input type="text" class="form-control" id="text" placeholder="text" value="Cardistry is cool">
         </div>
         <div class="form-group">
-            <a href="page-list.html" class="btn btn-danger btn-block">Delete</a>
+            <label for="url">URL</label>
+            <input type="text" class="form-control" id="url" placeholder="https://..." value="https://i.kinja-img.com/gawker-media/image/upload/s--otuTTAxW--/c_scale,fl_progressive,q_80,w_800/chxzb0uyiwhjnzbvvtp4.gif">
+        </div>
+        <div class="form-group">
+            <label for="width">Width</label>
+            <input type="text" class="form-control" id="width" placeholder="100%" value="100%">
+        </div>
+        <div class="form-group">
+            <label for="img">Upload</label>
+            <a class="btn btn-default btn-block" id="img">Choose File <input type="text" placeholder="No file chosen"></a>
+        </div>
+        <div class="form-group">
+            <a href="widget-chooser.html" class="btn btn-primary btn-block">Upload Image</a>
+        </div>
+        <div class="form-group">
+            <a href="widget-chooser.html" class="btn btn-danger btn-block">Delete</a>
         </div>
     </form>
 </div>
@@ -52,13 +67,12 @@
     <div class="container">
         <div class="row navbar-text">
             <div class="col-xs-offset-11 text-center ">
-                <a href="profile.html">
+                <a href="../user/profile.html">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>
         </div>
     </div>
 </nav>
-</body>
 </body>
 </html>
