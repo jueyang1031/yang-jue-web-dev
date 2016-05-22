@@ -11,12 +11,15 @@
 }
 
 .intro-message {
+    margin: auto;
     position: relative;
     padding-top: 5%;
     padding-bottom: 10%;
+    background-color: rgba(201, 211, 237, 0.25);
 }
 
 .intro-pic {
     position: relative;
-    padding-top: 60px;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
