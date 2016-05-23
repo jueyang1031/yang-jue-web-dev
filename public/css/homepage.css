@@ -6,7 +6,7 @@
     text-align: center;
     height: 650px;
     color: white;
-    background: url("../images/main.png");
+    background: url("../images/main.png") no-repeat center;
     background-size: cover;
 }
 
@@ -25,4 +25,16 @@
     position: relative;
     padding-top: 5%;
     padding-bottom: 5%;
+}
+
+.main-content {
+    background: url("http://static.planetminecraft.com/files/resource_media/screenshot/1236/pack_3530346.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.project-content {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    color: white;
+    background-color: rgba(212, 212, 212, 0.3);;
 }
