@@ -17,10 +17,22 @@
     function ProfileController($routeParams) {
         var vm = this;
         var id = $routeParams.id;
-        for (var i in users) {
-            if(users[i]._id === id) {
-                vm.user = users[i];
+        var index = -1;
+        vm.updateUser = updateUser;
+        function init() {
+            for(var i in users) {
+                if(users[i]._id === id) {
+                    vm.user = angular.copy(users[i]);
+                    index = i;
+                }
             }
+        }
+        init();
+
+        function updateUser(newUser) {
+            users[index].firstName = newUser.firstName;
+            users[index].lastName = newUser.lastName;
+            vm.success = "Success! Your profile was saved."
         }
     }
 
@@ -32,7 +44,7 @@
         function login(username, password) {
             for (var i in users) {
                 if (username === users[i].username && password === users[i].password) {
-                    $location.url("/profile/" + users[i]._id);
+                    $location.url("/user/" + users[i]._id);
                 } else {
                     vm.error = "User not found";
                 }

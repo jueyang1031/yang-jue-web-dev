@@ -7,23 +7,23 @@
     <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link href="../css/style.css" rel="stylesheet"/>
-    <title>Widget image</title>
+    <title>Page list</title>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-inner">
             <p class="navbar-text pull-left">
-                <a href="widget-chooser.html" class="navbar-link">
+                <a href="page-list.view.client.html" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left">
                     </span>
                 </a>
             </p>
             <a class="navbar-brand" href="#">
-                Widget Edit
+                New Page
             </a>
             <p class="navbar-text pull-right">
-                <a href="widget-chooser.html" class="navbar-link">
+                <a href="page-list.view.client.html" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -36,29 +36,11 @@
     <form>
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="name" value="card">
+            <input type="text" class="form-control" id="name" placeholder="Name">
         </div>
         <div class="form-group">
-            <label for="text">Text</label>
-            <input type="text" class="form-control" id="text" placeholder="text" value="Cardistry is cool">
-        </div>
-        <div class="form-group">
-            <label for="url">URL</label>
-            <input type="text" class="form-control" id="url" placeholder="https://..." value="https://i.kinja-img.com/gawker-media/image/upload/s--otuTTAxW--/c_scale,fl_progressive,q_80,w_800/chxzb0uyiwhjnzbvvtp4.gif">
-        </div>
-        <div class="form-group">
-            <label for="width">Width</label>
-            <input type="text" class="form-control" id="width" placeholder="100%" value="100%">
-        </div>
-        <div class="form-group">
-            <label for="img">Upload</label>
-            <input class="form-control" type="file" id="img" placeholder="No file chosen">
-        </div>
-        <div class="form-group">
-            <a href="widget-chooser.html" class="btn btn-primary btn-block">Upload Image</a>
-        </div>
-        <div class="form-group">
-            <a href="widget-chooser.html" class="btn btn-danger btn-block">Delete</a>
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description" placeholder="Description">
         </div>
     </form>
 </div>
@@ -74,5 +56,6 @@
         </div>
     </div>
 </nav>
+
 </body>
 </html>

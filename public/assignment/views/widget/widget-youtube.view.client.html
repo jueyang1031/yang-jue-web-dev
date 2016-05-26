@@ -7,14 +7,14 @@
     <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link href="../css/style.css" rel="stylesheet"/>
-    <title>Widget heading</title>
+    <title>Widget youtube</title>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-inner">
             <p class="navbar-text pull-left">
-                <a href="widget-chooser.html" class="navbar-link">
+                <a href="widget-chooser.view.client.html" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left">
                     </span>
                 </a>
@@ -23,7 +23,7 @@
                 Widget Edit
             </a>
             <p class="navbar-text pull-right">
-                <a href="widget-chooser.html" class="navbar-link">
+                <a href="widget-chooser.view.client.html" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -36,24 +36,22 @@
     <form>
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Name" value="GIZMODO">
+            <input type="text" class="form-control" id="name" placeholder="Name" value="Magic">
         </div>
         <div class="form-group">
             <label for="text">Text</label>
-            <input type="text" class="form-control" id="text" placeholder="Text" value="gizmodo">
+            <input type="text" class="form-control" id="text" placeholder="Text" value="Magic video">
         </div>
         <div class="form-group">
-            <label for="size">Size</label>
-            <select class="form-control" id="size" placeholder="Size" >
-                <option>1</option>
-                <option>2</option>
-                <option selected="selected">3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
+            <label for="url">URL</label>
+            <input type="text" class="form-control" id="url" placeholder="URL" value="https://www.youtube.com/embed/I0KSaqiv5C0">
         </div>
         <div class="form-group">
-            <a href="widget-chooser.html" class="btn btn-danger btn-block">Delete</a>
+            <label for="width">Width</label>
+            <input type="text" class="form-control" id="width" placeholder="100%" value="100%">
+        </div>
+        <div class="form-group">
+            <a href="widget-chooser.view.client.html" class="btn btn-danger btn-block">Delete</a>
         </div>
     </form>
 </div>

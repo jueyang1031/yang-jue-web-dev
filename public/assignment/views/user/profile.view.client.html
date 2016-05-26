@@ -19,7 +19,7 @@
                 Profile
             </a>
             <p class="navbar-text pull-right">
-                <a href="#" class="navbar-link">
+                <a ng-click="model.updateUser(model.user)" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -29,9 +29,9 @@
 </nav>
 
 <div class="container">
-    <div class="alert alert-success alert-dismissible" role="alert">
+    <div ng-show="model.success" class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Success!</strong> Your profile was saved.
+        {{model.success}}
     </div>
     <form>
         <div class="form-group">
@@ -53,7 +53,7 @@
     </form>
 
     <a class="btn btn-primary btn-block"
-       href="../website/website-list.html">Websites</a>
+       href="../website/website-list.view.client.html">Websites</a>
     <a class="btn btn-danger  btn-block"
        href="#/login">Logout</a>
 </div>
