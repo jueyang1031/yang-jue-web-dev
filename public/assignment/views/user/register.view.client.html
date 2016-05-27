@@ -12,10 +12,10 @@
 <!--<body>-->
 <div class="container">
     <h1>Register</h1>
-    <input type="text" placeholder="username" class="form-control">
-    <input type="password" placeholder="password" class="form-control">
-    <input type="password" placeholder="verify password" class="form-control">
-    <a href="#/profile" class="btn btn-primary btn-block">Register</a>
+    <input ng-model="username" type="text" placeholder="username" class="form-control">
+    <input ng-model="password" type="password" placeholder="password" class="form-control">
+    <input ng-model="verifyPassword" type="password" placeholder="verify password" class="form-control">
+    <a ng-click="model.createUser(username, password, verifyPassword)" class="btn btn-primary btn-block">Register</a>
     <a href="#/login" class="btn btn-danger btn-block">Cancel</a>
 </div>
 
