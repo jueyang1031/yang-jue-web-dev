@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href="../css/style.css" rel="stylesheet"/>
-    <title>Website list</title>
-</head>
-<body>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<meta name="apple-mobile-web-app-capable" content="yes">-->
+    <!--<meta name="apple-mobile-web-app-status-bar-style" content="black">-->
+    <!--<meta name="viewport" content="initial-scale=1.25, user-scalable = no">-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
+    <!--<link href="../css/style.css" rel="stylesheet"/>-->
+    <!--<title>Website list</title>-->
+<!--</head>-->
+<!--<body>-->
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-inner">
@@ -17,7 +17,7 @@
                 Websites
             </a>
             <p class="navbar-text pull-right" >
-                <a href="website-new.view.client.html" class="navbar-link">
+                <a href="#/user/{{model.uid}}/website/new" class="navbar-link">
           <span class="glyphicon glyphicon-plus">
           </span>
                 </a>
@@ -28,34 +28,11 @@
 
 <div class="container">
     <ul class="list-group">
-        <li class="list-group-item">
-            <a href="../page/page-list.view.client.html">Blogger</a>
-            <a href="website-edit.view.client.html">
-                <span class="glyphicon glyphicon-cog pull-right"></span>
+        <li ng-repeat="website in model.websites" class="list-group-item">
+            <a href="">
+                {{website.name}}
             </a>
-        </li>
-        <li class="list-group-item">
-            <a href="../page/page-list.view.client.html">Address Book</a>
-            <a href="website-edit.view.client.html">
-                <span class="glyphicon glyphicon-cog pull-right"></span>
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="../page/page-list.view.client.html">Gizmodo</a>
-            <a href="website-edit.view.client.html">
-                <span class="glyphicon glyphicon-cog pull-right"></span>
-            </a>
-        </li>
-
-        <li class="list-group-item">
-            <a href="../page/page-list.view.client.html">Weather</a>
-            <a href="website-edit.view.client.html">
-                <span class="glyphicon glyphicon-cog pull-right"></span>
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="../page/page-list.view.client.html">News</a>
-            <a href="website-edit.view.client.html">
+            <a href="#/user/{{website.developerId}}/website/{{website._id}}">
                 <span class="glyphicon glyphicon-cog pull-right"></span>
             </a>
         </li>
@@ -74,5 +51,5 @@
     </div>
 </nav>
 
-</body>
-</html>
+<!--</body>-->
+<!--</html>-->
