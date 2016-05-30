@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href="../css/style.css" rel="stylesheet"/>
-    <title>Widget choose</title>
-</head>
-<body>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-inner">
@@ -27,9 +16,9 @@
 </nav>
     <div class="container">
         <ul class="list-group list-unstyled">
-            <li class="list-group-item"><a href="widget-heading.view.client.html">Header</a></li>
-            <li class="list-group-item"><a href="widget-image.view.client.html">Image</a></li>
-            <li class="list-group-item"><a href="widget-youtube.view.client.html">Youtube</a></li>
+            <li class="list-group-item"><a ng-click="model.createWidget('HEADER')">Header</a></li>
+            <li class="list-group-item"><a ng-click="model.createWidget('IMAGE')">Image</a></li>
+            <li class="list-group-item"><a ng-click="model.createWidget('YOUTUBE')">Youtube</a></li>
         </ul>
     </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
@@ -43,6 +32,3 @@
         </div>
     </div>
 </nav>
-
-</body>
-</html>

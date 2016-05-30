@@ -20,10 +20,70 @@
 
     function WidgetService() {
         var api = {
-            findWidgetsByPageId: findWidgetsByPageId
+            findWidgetsByPageId: findWidgetsByPageId,
+            createWidget: createWidget,
+            findWidgetById: findWidgetById,
+            updateWidget: updateWidget,
+            deleteWidget: deleteWidget
 
         };
         return api;
+        
+        function deleteWidget(widgetId) {
+            for (var i in widgets) {
+                if (widgetId === widgets[i]._id) {
+                    widgets.splice(i, 1);
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        function updateWidget(widgetId, newWidget) {
+            for (var i in widgets) {
+                if (widgetId === widgets[i]._id) {
+                    switch (newWidget.widgetType) {
+                        case "HEADER": {
+                            widgets[i].text = newWidget.text;
+                            widgets[i].size = newWidget.size;
+                            break;
+                        }
+                        case "IMAGE": {
+                            widgets[i].width = newWidget.width;
+                            widgets[i].url = newWidget.url;
+                            break;
+                        }
+                        case "HTML": {
+                            widgets[i].text = newWidget.text
+                            widgets[i].url = newWidget.url;
+                            break;
+                        }
+                        case "YOUTUBE": {
+                            widgets[i].width = newWidget.width
+                            widgets[i].url = newWidget.url;
+                            break;
+                        }
+                    }
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        function findWidgetById(widgetId) {
+            for (var i in widgets) {
+                if (widgetId === widgets[i]._id) {
+                    return widgets[i];
+                }
+            }
+            return null;
+        }
+        
+        function createWidget(pageId, widget) {
+            widget.pageId = pageId;
+            widgets.push(widget);
+            return widget;
+        }
         
         function findWidgetsByPageId(pageId) {
             var resultSet = [];

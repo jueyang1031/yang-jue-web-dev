@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href="../css/style.css" rel="stylesheet"/>
-    <title>Widget image</title>
-</head>
-<body>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-inner">
@@ -23,7 +12,7 @@
                 Widget Edit
             </a>
             <p class="navbar-text pull-right">
-                <a href="widget-chooser.view.client.html" class="navbar-link">
+                <a ng-click="model.updateWidget(model.widget)" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -36,19 +25,19 @@
     <form>
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="name" value="card">
+            <input ng-model="model.widget.name" type="text" class="form-control" id="name" placeholder="name" value="card">
         </div>
         <div class="form-group">
             <label for="text">Text</label>
-            <input type="text" class="form-control" id="text" placeholder="text" value="Cardistry is cool">
+            <input ng-model="model.widget.text" type="text" class="form-control" id="text" placeholder="text" value="Cardistry is cool">
         </div>
         <div class="form-group">
             <label for="url">URL</label>
-            <input type="text" class="form-control" id="url" placeholder="https://..." value="https://i.kinja-img.com/gawker-media/image/upload/s--otuTTAxW--/c_scale,fl_progressive,q_80,w_800/chxzb0uyiwhjnzbvvtp4.gif">
+            <input ng-model="model.widget.url" type="text" class="form-control" id="url" placeholder="https://..." value="https://i.kinja-img.com/gawker-media/image/upload/s--otuTTAxW--/c_scale,fl_progressive,q_80,w_800/chxzb0uyiwhjnzbvvtp4.gif">
         </div>
         <div class="form-group">
             <label for="width">Width</label>
-            <input type="text" class="form-control" id="width" placeholder="100%" value="100%">
+            <input ng-model="model.widget.width" type="text" class="form-control" id="width" placeholder="100%" value="100%">
         </div>
         <div class="form-group">
             <label for="img">Upload</label>
@@ -58,7 +47,7 @@
             <a href="widget-chooser.view.client.html" class="btn btn-primary btn-block">Upload Image</a>
         </div>
         <div class="form-group">
-            <a href="widget-chooser.view.client.html" class="btn btn-danger btn-block">Delete</a>
+            <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block">Delete</a>
         </div>
     </form>
 </div>
@@ -74,5 +63,3 @@
         </div>
     </div>
 </nav>
-</body>
-</html>
