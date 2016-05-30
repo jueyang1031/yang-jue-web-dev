@@ -15,7 +15,7 @@
         function createPage(name, title) {
             var newPage = {
                 name: name,
-                description: title
+                title: title
             }
             if (PageService.createPage($routeParams.wid, newPage))
                 $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page");

@@ -46,15 +46,13 @@
                         case "HEADER": {
                             widgets[i].text = newWidget.text;
                             widgets[i].size = newWidget.size;
+                            if (widgets[i].size == null){
+                                widgets[i].widgetType = "HTML";
+                            }
                             break;
                         }
                         case "IMAGE": {
                             widgets[i].width = newWidget.width;
-                            widgets[i].url = newWidget.url;
-                            break;
-                        }
-                        case "HTML": {
-                            widgets[i].text = newWidget.text
                             widgets[i].url = newWidget.url;
                             break;
                         }
