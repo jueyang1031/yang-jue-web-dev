@@ -12,12 +12,17 @@
         vm.login = login;
 
         function login(username, password) {
-            var user = UserService.findUserByCredentials(username, password);
-                if (user) {
+            UserService
+                .findUserByCredentials(username, password)
+                .then(function (response) {
+                var user = response.data;
+
+                if (user._id) {
                     $location.url("/user/" + user._id);
                 } else {
                     vm.error = "User not found";
                 }
+            })
         }
     }
 })();

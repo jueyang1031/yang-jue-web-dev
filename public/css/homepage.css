@@ -12,7 +12,6 @@
 
 .intro-pic {
     margin: auto;
-    align: center;
     position: relative;
     padding-top: 5%;
     padding-bottom: 5%;
@@ -24,14 +23,23 @@
     padding-top: 3%;
     padding-bottom: 3%;
     background-color: rgba(212, 212, 212, 0.3);
-    border-radius: 10px;
+    border-radius: 4px;
+    height: 260px;
 
 }
 
-
+#myName {
+    font-size: 380%;
+    font-weight: 600;
+}
 .intro-text {
-    /*padding-top: 3%;*/
-    padding-bottom: 3%;
+    margin: auto;
+    position: relative;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 200%;
+    font-weight: 400;
+    /*height: 26%;*/
 }
 
 .main-content {

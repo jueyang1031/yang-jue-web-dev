@@ -12,13 +12,24 @@
         vm.updateUser = updateUser;
 
         function init() {
-            vm.user = UserService.findUserById(id);
+            UserService
+                .findUserById(id)
+                .then(function (response) {
+                    vm.user = response.data;
+                });
         }
         init();
 
         function updateUser(newUser) {
-            if (UserService.updateUser(id, newUser))
-                vm.success = "Success! Your profile was saved."
+            UserService
+                .updateUser(id, newUser)
+                .then(function (response) {
+                    vm.success = "Success! Your profile was saved."
+                },
+                function (error) {
+                    vm.error = "Unable to update profile."
+                });
+
             // users[index].firstName = newUser.firstName;
             // users[index].lastName = newUser.lastName;
             // vm.success = "Success! Your profile was saved."

@@ -15,9 +15,16 @@
                     username: username,
                     password: password
                 };
-                var user = UserService.createUser(newUser);
-                $location.url("/user/" + user._id);
-
+                
+                UserService
+                    .createUser(newUser)
+                    .then(function (response) {
+                        var user = response.data;
+                        $location.url("/user/" + user._id);
+                    },
+                    function (error) {
+                        vm.error = "Unable to register."
+                    })
             } else {
                 vm.error = "Please verify your password."
             }
