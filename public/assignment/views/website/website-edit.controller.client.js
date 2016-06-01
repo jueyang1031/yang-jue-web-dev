@@ -13,21 +13,42 @@
         vm.deleteWebsite = deleteWebsite;
         vm.uid = $routeParams.uid;
         function init(){
-            vm.website = WebsiteService.findWebsiteById(websiteId);
+            WebsiteService
+                .findWebsiteById(websiteId)
+                .then(function (response) {
+                    vm.website = response.data;
+                });
         }
         init();
 
         function deleteWebsite(websiteId) {
-            if (WebsiteService.deleteWebsite(websiteId))
-                $location.url("/user/" + vm.uid + "/website");
-            else vm.error = "Unable to delete website."
+            WebsiteService
+                .deleteWebsite(websiteId)
+                .then(function (response) {
+                        $location.url("/user/" + vm.uid + "/website");
+                },
+                function (error) {
+                    vm.error = "Unable to delete website."
+                });
+            //
+            // if (WebsiteService.deleteWebsite(websiteId))
+            //     $location.url("/user/" + vm.uid + "/website");
+            // else vm.error = "Unable to delete website."
         }
 
         function updateWebsite(newWebsite) {
+            WebsiteService
+                .updateWebsite(websiteId, newWebsite)
+                .then(function (response) {
+                    $location.url("/user/" + vm.uid + "/website");
+                },
+                function (error) {
+                    vm.error = "Unable to update website."
+                });
 
-            if (WebsiteService.updateWebsite(websiteId, newWebsite))
-                $location.url("/user/" + vm.uid + "/website");
-            else vm.error = "Unable to update website."
+            // if (WebsiteService.updateWebsite(websiteId, newWebsite))
+            //     $location.url("/user/" + vm.uid + "/website");
+            // else vm.error = "Unable to update website."
         }
 
     }
