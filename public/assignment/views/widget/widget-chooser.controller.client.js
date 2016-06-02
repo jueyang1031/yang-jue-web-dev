@@ -23,11 +23,17 @@
                 _id: (new Date()).getTime() + "",
                 widgetType: widgetType
             };
-            vm.widget = WidgetService.createWidget(vm.pid, widget);
-            if (vm.widget) {
-                $location.url
-                ("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget/" + widget._id);
-            }
+            WidgetService
+                .createWidget(vm.pid, widget)
+                .then(function (response) {
+                    if (response.data._id) {
+                        $location.url
+                        ("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget/" + widget._id);
+                    }
+                },
+                function (error) {
+                    vm.error = "Unable to create widget";
+                });
         }
     }
 })();

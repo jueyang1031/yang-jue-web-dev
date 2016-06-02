@@ -30,20 +30,37 @@
 
 
         function init() {
-            vm.widget = WidgetService.findWidgetById(vm.wgid);
+            WidgetService
+                .findWidgetById(vm.wgid)
+                .then(function (response) {
+                    vm.widget = response.data;
+                },
+                function (error) {
+                    vm.error = "Unable to find widget";
+                });
         }
         init();
         
         function deleteWidget() {
-            if (WidgetService.deleteWidget(vm.wgid)) {
-                $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget");
-            } else vm.error = "Unable to delete widget";
+            WidgetService
+                .deleteWidget(vm.wgid)
+                .then(function (response) {
+                    $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget");
+                },
+                function (error) {
+                    vm.error = "Unable to delete widget";
+                });
         }
         
         function updateWidget(newWidget) {
-            if(WidgetService.updateWidget(vm.wgid, newWidget)) {
-                $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget");
-            } else vm.error = "Unable to delete widget";
+            WidgetService
+                .updateWidget(vm.wgid, newWidget)
+                .then(function (response) {
+                    $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget");
+                },
+                function (error) {
+                    vm.error = "Unable to delete widget";
+                });
         }
 
     }

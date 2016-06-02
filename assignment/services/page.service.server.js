@@ -67,4 +67,4 @@ module.exports = function (app) {
         }
         res.send(400);
     }
-}
+};
