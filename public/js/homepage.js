@@ -6,7 +6,8 @@
     var messages = [
         "Northeastern Student",
         "Full Stack Developer",
-        "Minecraft Enthusiast"
+        "Minecraft Enthusiast",
+        "Nature lover"
     ];
 
     function nextMsg(i) {

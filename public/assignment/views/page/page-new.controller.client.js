@@ -16,10 +16,15 @@
             var newPage = {
                 name: name,
                 title: title
-            }
-            if (PageService.createPage($routeParams.wid, newPage))
-                $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page");
-            else vm.error = "Unable to create page";
+            };
+            PageService
+                .createPage($routeParams.wid, newPage)
+                .then(function (response) {
+                    $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page");
+                },
+                function (error) {
+                    vm.error = "Unable to create page";
+                });
         }
     }
 })();
