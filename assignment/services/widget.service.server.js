@@ -68,7 +68,8 @@ module.exports = function (app) {
                         break;
                     }
                     case "IMAGE": {
-                        widgets[i].width = newWidget.width;
+                        if (newWidget.width)
+                            widgets[i].width = newWidget.width;
                         widgets[i].url = newWidget.url;
                         break;
                     }

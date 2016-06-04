@@ -27,7 +27,7 @@
         vm.wgid = $routeParams.wgid;
         vm.updateWidget = updateWidget;
         vm.deleteWidget = deleteWidget;
-
+        vm.navigateToSearch = navigateToSearch;
 
         function init() {
             WidgetService
@@ -40,7 +40,16 @@
                 });
         }
         init();
-        
+
+        function navigateToSearch(newWidget) {
+            WidgetService
+                .updateWidget(vm.wgid, newWidget)
+                .then(function (response) {
+                    $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget/" + vm.wgid + "/search");
+                });
+
+        }
+
         function deleteWidget() {
             WidgetService
                 .deleteWidget(vm.wgid)
