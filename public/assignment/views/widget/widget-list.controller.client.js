@@ -19,6 +19,8 @@
                 .findWidgetsByPageId(vm.pid)
                 .then(function (response) {
                     vm.widgets = response.data;
+                    $(".container")
+                        .sortable();
                 },
                 function (error) {
                     vm.error = "Unable to find widgets";
