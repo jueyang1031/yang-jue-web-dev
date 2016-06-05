@@ -12,7 +12,8 @@
             createWidget: createWidget,
             findWidgetById: findWidgetById,
             updateWidget: updateWidget,
-            deleteWidget: deleteWidget
+            deleteWidget: deleteWidget,
+            sortWidget: sortWidget
 
         };
         return api;
@@ -40,6 +41,11 @@
         function findWidgetsByPageId(pageId) {
             var url = "/api/page/" + pageId + "/widget";
             return $http.get(url);
+        }
+
+
+        function sortWidget(websiteId, pageId, startIndex, endIndex) {
+            return $http.put("/api/website/"+websiteId+"/page/"+pageId+"/widget?startIndex="+startIndex+"&endIndex="+endIndex);
         }
 
     }

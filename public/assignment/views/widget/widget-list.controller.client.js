@@ -13,6 +13,7 @@
         vm.pid = $routeParams.pid;
         vm.getSafeHtml = getSafeHtml;
         vm.getSafeUrl = getSafeUrl;
+        vm.sortWidget = sortWidget;
 
         function init() {
             WidgetService
@@ -20,7 +21,7 @@
                 .then(function (response) {
                     vm.widgets = response.data;
                     $(".container")
-                        .sortable();
+                        .sortable({axis: "y"});
                 },
                 function (error) {
                     vm.error = "Unable to find widgets";
@@ -37,6 +38,18 @@
             var id = urlParts[urlParts.length - 1];
             var url = "https://www.youtube.com/embed/" + id;
             return $sce.trustAsResourceUrl(url);
+        }
+
+        function sortWidget(start, end) {
+            WidgetService
+                .sortWidget(vm.wid, vm.pid, start, end)
+                .then(
+                    function (response) {
+                    },
+                    function (err) {
+                        vm.error = err;
+                    }
+                );
         }
     }
 })();

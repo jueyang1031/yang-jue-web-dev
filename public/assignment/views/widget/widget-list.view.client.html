@@ -23,7 +23,7 @@
 
 
 
-<div class="container">
+<div jga-sortable jga-sortable-callback="model.sortWidget(start, end)" class="container">
     <div ng-repeat="widget in model.widgets" class="jga-widget">
         <div class="jga-widget-tool">
             <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">

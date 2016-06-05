@@ -1,7 +1,7 @@
 /**
  * Created by yangjue on 6/2/16.
  */
-module.exports = function (app) {
+module.exports = function (app, model) {
 
     var widgets = [
         {"_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
@@ -28,6 +28,18 @@ module.exports = function (app) {
     app.put("/api/widget/:widgetId", updateWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
     app.post("/api/upload", upload.single('myFile'), uploadImage);
+    app.put("/api/website/:websiteId/page/:pageId/widget", updateWidgets);
+
+    function updateWidgets(req, res) {
+        var websiteId = req.params.websiteId;
+        var pageId = req.params.pageId;
+        var startIndex = req.query.startIndex;
+        var endIndex = req.query.endIndex;
+
+        if (startIndex && endIndex) {
+            widgets.splice(endIndex, 0, widgets.splice(startIndex, 1)[0]);
+        }
+    }
 
     function createWidget(req, res) {
         var pageId = req.params.pageId;
