@@ -18,7 +18,7 @@
             };
 
             WebsiteService
-                .createWebsite(vm.id, website)
+                .createWebsite(vm.uid, website)
                 .then(function (response) {
                     $location.url("/user/" + vm.uid + "/website");
                 },

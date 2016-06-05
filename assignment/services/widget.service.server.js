@@ -37,7 +37,7 @@ module.exports = function (app, model) {
         var endIndex = req.query.endIndex;
 
         if (startIndex && endIndex) {
-            widgets.splice(endIndex, 0, widgets.splice(startIndex, 1)[0]);
+            widgets.splice(endIndex, 0, widgets.splice(startIndex, 1)[0]); //splice() method returns the removed item(s).
         }
     }
 
