@@ -1,5 +1,4 @@
 {
-
   "name": "web-dev",
   "version": "1.0.0",
   "description": "Web Dev at Northeastern University",
@@ -7,7 +6,8 @@
   "dependencies": {
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
-    "mongoose": "^4.4.15"
+    "mongoose": "^4.4.15",
+    "multer": "^1.1.0"
   },
   "devDependencies": {},
   "scripts": {
@@ -16,5 +16,4 @@
   },
   "author": "Jose G. Annunziato",
   "license": "ISC"
-
 }
