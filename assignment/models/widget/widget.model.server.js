@@ -12,8 +12,9 @@ module.exports = function () {
         findWidgetById: findWidgetById,
         updateWidget: updateWidget,
         deleteWidget: deleteWidget,
-        reorderWidget: reorderWidget
+        reorderWidget: reorderWidget,
     };
+    return api;
 
     function createWidget(pageId, widget) {
         widget._page = pageId;
@@ -30,7 +31,7 @@ module.exports = function () {
     
     function updateWidget(widgetId, widget) {
         delete widget._id;
-        return Widget.update({_id: widget}, {
+        return Widget.update({_id: widgetId}, {
             $set: widget
         });
     }

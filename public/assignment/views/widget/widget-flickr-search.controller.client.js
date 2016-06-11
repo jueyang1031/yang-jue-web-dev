@@ -15,7 +15,7 @@
         vm.selectPhoto = function (photo) {
             var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
             url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
-            var widget = {widgetType: "IMAGE",
+            var widget = {type: "IMAGE",
                 url: url};
             WidgetService
                 .updateWidget(vm.wgid, widget)

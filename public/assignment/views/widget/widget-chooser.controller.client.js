@@ -20,13 +20,13 @@
 
         function createWidget(widgetType) {
             var widget = {
-                _id: (new Date()).getTime() + "",
-                widgetType: widgetType
+                type: widgetType
             };
             WidgetService
                 .createWidget(vm.pid, widget)
                 .then(function (response) {
-                    if (response.data._id) {
+                    if (response.data && response.data._id) {
+                        widget = response.data;
                         $location.url
                         ("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget/" + widget._id);
                     }
