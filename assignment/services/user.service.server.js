@@ -1,7 +1,10 @@
 /**
  * Created by yangjue on 5/31/16.
  */
-module.exports = function (app) {
+module.exports = function (app, models) {
+
+    var userModel = models.userModel;
+
     var users = [
         {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
         {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
@@ -16,37 +19,43 @@ module.exports = function (app) {
     app.delete("/api/user/:userId", deleteUser);
     
     function createUser(req, res) {
+
         var newUser = req.body;
-        newUser._id = (new Date().getTime()) + "";
-        users.push(newUser);
-        res.send(newUser);
+
+        userModel
+            .createUser(newUser)
+            .then(function (user) {
+                    res.json(user);
+            },
+            function (error) {
+                res.sendStatus(400);
+            });
     }
     
     function deleteUser(req, res) {
         var id = req.params.userId;
-        for (var i in users) {
-            if (id === users[i]._id) {
-                users.slice(i, 1);
-                res.send(200);
-                return;
-            }
 
-        }
-        res.send(400);
+        userModel
+            .deleteUser(id)
+            .then(function (stat) {
+                res.sendStatus(200);
+            }, 
+            function (error) {
+                res.statusCode(404).send(error);
+            });
     }
 
     function updateUser(req, res) {
         var id = req.params.userId;
         var newUser = req.body;
-        for (var i in users) {
-            if (users[i]._id === id) {
-                users[i].firstName = newUser.firstName;
-                users[i].lastName = newUser.lastName;
-                res.send(200);
-                return;
-            }
-        }
-        res.send(400);
+        userModel
+            .updateUser(id, newUser)
+            .then(function (stat) {
+                res.sendStatus(200);
+            },
+            function (error) {
+                res.statusCode(404).send();
+            });
     }
 
     function getUsers(req, res) {
@@ -62,33 +71,37 @@ module.exports = function (app) {
     }
     
     function findUserByCredentials(username, password, res) {
-        for (var i in users) {
-            if (username === users[i].username && password === users[i].password) {
-                res.send(users[i]);
-                return;
-            }
-        }
-        res.send({});
+        userModel
+            .findUserByCreadentials(username, password)
+            .then(function (user) {
+                res.json(user);
+            },
+            function (error) {
+                res.statusCode(404).send(error);
+            });
     }
     
     function findUserByUsername(username, res) {
-        for (var i in users) {
-            if (username === users[i].username) {
-                res.send(users[i]);
-                return;
-            }
-        }
-        res.send({});
+        userModel
+            .findUserByUsername(username, password)
+            .then(function (user) {
+                    res.json(user);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                });
     }
     
     function findUserById(req, res) {
+        
         var id = req.params.userId;
-        for (var i in users) {
-            if (id === users[i]._id) {
-                res.send(users[i]);
-                return;
-            }
-        }
-        res.send({});
+        userModel
+            .findUserById(id)
+            .then(function (response) {
+                res.json(response);
+            },
+            function (error) {
+                res.sendStatus(404);
+            });
     }
 };

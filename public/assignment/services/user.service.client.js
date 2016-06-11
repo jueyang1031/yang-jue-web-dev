@@ -24,7 +24,7 @@
 
         function deleteUser(user) {
             var url = "/api/user/" + user._id;
-            return $http.deleteUser(url);
+            return $http.delete(url);
         }
 
         function createUser(user) {
@@ -45,13 +45,6 @@
         function findUserByCredentials(username, password) {
             var url = "/api/user?username=" + username + "&password=" + password;
             return $http.get(url);
-            // for (var i in users) {
-            //     if (username === users[i].username && password === users[i].password) {
-            //         return users[i];
-            //     }
-            //
-            // }
-            // return null;
         }
     }
 })();
