@@ -62,6 +62,10 @@
         }
         
         function updateWidget(newWidget) {
+            if (!newWidget.name) {
+                vm.error = "name cannot be empty";
+                return;
+            }
             WidgetService
                 .updateWidget(vm.wgid, newWidget)
                 .then(function (response) {

@@ -23,7 +23,14 @@ module.exports = function (app, models) {
         var endIndex = req.query.endIndex;
 
         if (startIndex && endIndex) {
-            widgets.splice(endIndex, 0, widgets.splice(startIndex, 1)[0]); //splice() method returns the removed item(s).
+            widgetModel
+                .reorderWidget(pageId, startIndex, endIndex)
+                .then(function (stat) {
+                    res.sendStatus(200);
+                },
+                function (error) {
+                    res.sendStatus(400);
+                });
         }
     }
 

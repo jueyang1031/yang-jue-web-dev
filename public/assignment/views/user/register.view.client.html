@@ -11,12 +11,18 @@
 <!--</head>-->
 <!--<body>-->
 <div class="container">
+    <form name="form" novalidate>
     <h1>Register</h1>
-    <input ng-model="username" type="text" placeholder="username" class="form-control">
-    <input ng-model="password" type="password" placeholder="password" class="form-control">
-    <input ng-model="verifyPassword" type="password" placeholder="verify password" class="form-control">
+        <div ng-show="model.error" class="alert alert-danger" role="alert" >{{model.error}}</div>
+    <input ng-model="username" required name="username" type="text" placeholder="username" class="form-control">
+        <div ng-show="form.username.$touched && form.username.$invalid">username is required</div>
+    <input ng-model="password" required name="password" type="password" placeholder="password" class="form-control">
+        <div ng-show="form.password.$touched && form.password.$invalid">password is required</div>
+    <input ng-model="verifyPassword" required name="password2" type="password" placeholder="verify password" class="form-control">
+        <div ng-show="form.password2.$touched && form.password2.$invalid ">verify password</div>
     <a ng-click="model.createUser(username, password, verifyPassword)" class="btn btn-primary btn-block">Register</a>
     <a href="#/login" class="btn btn-danger btn-block">Cancel</a>
+    </form>
 </div>
 
 <!--</body>-->

@@ -10,6 +10,10 @@
         var vm = this;
         vm.createUser = createUser;
         function createUser(username, password, verifyPassword) {
+            if (!username || !password || !verifyPassword) {
+                vm.error = "Empty or incorrect fields";
+                return;
+            }
             if (password === verifyPassword) {
                 var newUser = {
                     username: username,

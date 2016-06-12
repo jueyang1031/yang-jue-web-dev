@@ -12,6 +12,10 @@
         vm.login = login;
 
         function login(username, password) {
+            if (!username || !password) {
+                vm.error = "username and password cannot be empty";
+                return;
+            }
             UserService
                 .findUserByCredentials(username, password)
                 .then(function (response) {

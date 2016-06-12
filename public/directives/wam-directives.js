@@ -3,10 +3,10 @@
  */
 (function(){
     angular
-        .module("jgaDirectives", [])
-        .directive("jgaSortable", jgaSortable);
+        .module("wamDirectives", [])
+        .directive("wamSortable", wamSortable);
 
-    function jgaSortable() {
+    function wamSortable() {
         function link(scope, element, attrs) {
             var start = null;
             var end   = null;
@@ -23,13 +23,13 @@
                         if(start >= end) {
                             start--;
                         }
-                        scope.jgaSortableCallback({start: start, end: end});
+                        scope.wamSortableCallback({start: start, end: end});
                     }
                 });
         }
         return {
             scope: {
-                jgaSortableCallback: '&'
+                wamSortableCallback: '&'
             },
             link: link
         };

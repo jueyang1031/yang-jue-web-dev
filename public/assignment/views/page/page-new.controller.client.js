@@ -13,6 +13,10 @@
         vm.createPage = createPage;
 
         function createPage(name, title) {
+            if (!name) {
+                vm.error = "name cannot be empty";
+                return;
+            }
             var newPage = {
                 name: name,
                 title: title

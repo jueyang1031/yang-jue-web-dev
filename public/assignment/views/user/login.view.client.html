@@ -13,12 +13,16 @@
 <!--<body>-->
 
     <div class="container">
+        <form name="form" novalidate>
         <h1>Login</h1>
         <div ng-show="model.error" class="alert alert-danger" role="alert" >{{model.error}}</div>
-        <input ng-model="username" type="text" placeholder="username" class="form-control">
-        <input ng-model="password" type="password" placeholder="password" class="form-control">
+        <input ng-model="username" required name="username" type="text" placeholder="username" class="form-control">
+        <div ng-show="form.username.$touched && form.username.$invalid">username is required</div>
+        <input ng-model="password" required name="password" type="password" placeholder="password" class="form-control">
+        <div ng-show="form.password.$touched && form.password.$invalid">password is required</div>
         <a ng-click="model.login(username, password)" class="btn btn-primary btn-block">Login</a>
         <a href="#/register" class="btn btn-success btn-block">Register</a>
+        </form>
     </div>
 
 <!--</body>-->

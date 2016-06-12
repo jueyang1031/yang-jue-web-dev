@@ -33,15 +33,18 @@
 </nav>
 
 <div class="container">
-    <form>
+    <div ng-show="model.error" class="alert alert-danger" role="alert" >{{model.error}}</div>
+    <form name="form" novalidate>
         <div class="form-group">
             <label for="name">Website Name</label>
             <input  ng-model="model.website.name"
+                    required name="name"
                     type="text"
                    class="form-control"
                    id="name"
                    value="Apple"
                    placeholder="Google">
+            <div ng-show="form.name.$touched && form.name.$invalid">name is required</div>
         </div>
         <div class="form-group">
             <label for="description">Website Description</label>

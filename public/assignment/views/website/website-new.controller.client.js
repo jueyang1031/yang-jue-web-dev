@@ -12,6 +12,10 @@
         vm.createWebsite = createWebsite;
 
         function createWebsite(name, description) {
+            if (!name){
+                vm.error = "name cannot be empty";
+                return;
+            }
             var website = {
                 name : name,
                 description: description

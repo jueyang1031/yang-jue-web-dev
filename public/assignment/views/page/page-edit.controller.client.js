@@ -35,6 +35,10 @@
         }
 
         function updatePage(newPage) {
+            if (!newPage.name) {
+                vm.error = "name cannot be empty";
+                return;
+            }
             PageService
                 .updatePage(vm.pid, newPage)
                 .then(function (response) {
