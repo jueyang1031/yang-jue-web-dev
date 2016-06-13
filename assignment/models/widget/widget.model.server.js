@@ -49,7 +49,26 @@ module.exports = function () {
     }
     
     function deleteWidget(widgetId) {
-        return Widget.remove({_id: widgetId});
+        return Widget
+            .findById(widgetId)
+            .then(function (widget) {
+               return Widget
+                   .find({ $and: [{_page: widget._page}, {order: {$gt: widget.order} }]})
+                   .then(function (widgets) {
+                       widgets.forEach(function (w) {
+                           w.order--;
+                           w.save(function(err,doc){});
+                       });
+                       return Widget.remove({_id: widgetId});
+                   },
+                   function (error) {
+
+                   });
+            },
+            function (error) {
+                
+            });
+
     }
     
     function reorderWidget(pageId, start, end) {
