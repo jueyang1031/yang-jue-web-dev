@@ -45,7 +45,7 @@
 
 
         function sortWidget(websiteId, pageId, startIndex, endIndex) {
-            return $http.put("/api/website/"+websiteId+"/page/"+pageId+"/widget?startIndex="+startIndex+"&endIndex="+endIndex);
+            return $http.put("/api/page/"+pageId+"/widget?start="+startIndex+"&end="+endIndex);
         }
 
     }

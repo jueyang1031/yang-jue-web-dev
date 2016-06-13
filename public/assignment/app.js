@@ -1,4 +1,4 @@
 /**
  * Created by yangjue on 5/25/16.
  */
-angular.module("WebAppMaker", ["ngRoute", "wamDirectives"]);
+angular.module("WebAppMaker", ["ngRoute", "wamDirectives", "textAngular"]);

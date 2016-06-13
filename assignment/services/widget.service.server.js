@@ -14,18 +14,17 @@ module.exports = function (app, models) {
     app.put("/api/widget/:widgetId", updateWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
     app.post("/api/upload", upload.single('myFile'), uploadImage);
-    app.put("/api/website/:websiteId/page/:pageId/widget", updateWidgets);
+    app.put("/api/page/:pageId/widget", updateWidgets);
 
     function updateWidgets(req, res) {
-        var websiteId = req.params.websiteId;
         var pageId = req.params.pageId;
-        var startIndex = req.query.startIndex;
-        var endIndex = req.query.endIndex;
+        var startIndex = req.query.start;
+        var endIndex = req.query.end;
 
         if (startIndex && endIndex) {
             widgetModel
                 .reorderWidget(pageId, startIndex, endIndex)
-                .then(function (stat) {
+                .then(function (widgets) {
                     res.sendStatus(200);
                 },
                 function (error) {

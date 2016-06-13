@@ -8,8 +8,8 @@
 
     function wamSortable() {
         function link(scope, element, attrs) {
-            var start = null;
-            var end   = null;
+            var start = -1;
+            var end   = -1;
             $(element)
                 .sortable({
                     axis: "y",
