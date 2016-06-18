@@ -17,7 +17,7 @@
                 return;
             }
             UserService
-                .findUserByCredentials(username, password)
+                .login(username, password)
                 .then(function (response) {
                 var user = response.data;
 
@@ -26,7 +26,7 @@
                 } else {
                     vm.error = "User not found";
                 }
-            })
+            });
         }
     }
 })();

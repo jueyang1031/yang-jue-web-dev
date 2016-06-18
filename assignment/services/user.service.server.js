@@ -1,22 +1,118 @@
 /**
  * Created by yangjue on 5/31/16.
  */
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var bcrypt = require("bcrypt-nodejs");
+
 module.exports = function (app, models) {
 
     var userModel = models.userModel;
 
-    var users = [
-        {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-        {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-        {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-    ];
-
     app.post("/api/user", createUser);
+    app.post("/api/logout", logout);
+    app.post("/api/register", register);
+    app.get("/api/loggedIn", loggedIn);
+    app.post("/api/login", passport.authenticate('local'),  login);
     app.get("/api/user", getUsers);
     app.get("/api/user/:userId", findUserById);
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
+
+    // if it is default 'local', no need to provide 'local', if others, must provide
+    passport.use('local', new LocalStrategy(localStrategy));
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
+    // this function expects username and password (with exact words) in request body
+    function localStrategy(username, password, done) {
+        userModel
+            .findUserByUsername(username)
+            .then(function (user) {
+                    if(user) {
+                        if(user && bcrypt.compareSync(password, user.password)) {
+                            return done(null, user);
+                        } else {
+                            return done(null, false);
+                        }
+                    } else {
+                        return done(null, false);
+                    }
+                },
+                function (error) {
+                    if (err) { return done(err); }
+                });
+    }
+
+    function serializeUser(user, done) {
+        return done(null, user);
+    }
+
+    function deserializeUser(user, done) {
+        userModel
+            .findUserById(user._id)
+            .then(
+                function(user){
+                    return done(null, user);
+                },
+                function(err){
+                    return done(err, null);
+                }
+            );
+    }
+
+    function login(req, res) {
+        var user = req.user;
+        res.json(user);
+    }
+    
+    function logout(req, res) {
+        req.logout();
+        res.sendStatus(200);
+    }
+    
+    function loggedIn(req, res) {
+        if (req.isAuthenticated())
+            res.json(req.user);
+        else
+            res.send('0');
+    }
+    
+    function register(req, res) {
+        var username = req.body.username;
+        var password = req.body.password;
+        
+        userModel
+            .findUserByUsername(username)
+            .then(function (user) {
+                if (user) {
+                    res.status(400).send("username already in use.");
+                    return;
+                } else {
+                    req.body.password = bcrypt.hashSync(req.body.password);
+                    return userModel
+                        .createUser(req.body)
+                }
+            },
+            function (error) {
+                res.sendStatus(400);
+            })
+            .then(function (user) {
+                if (user) {
+                    req.login(user, function (err) {
+                        if (err) {
+                            res.status(400).send(err);
+                        } else {
+                            res.json(user);
+                        }
+                    })
+                }
+                res.json(user);
+            },
+            function (error) {
+                res.sendStatus(400);
+            });
+    }
     
     function createUser(req, res) {
 
@@ -62,7 +158,7 @@ module.exports = function (app, models) {
         var username = req.query['username'];
         var password = req.query['password'];
         if(username && password) {
-            findUserByCredentials(username, password, res);
+            findUserByCredentials(username, password, req, res);
         } else if (username) {
             findUserByUsername(username, res);
         } else {
@@ -70,10 +166,12 @@ module.exports = function (app, models) {
         }
     }
     
-    function findUserByCredentials(username, password, res) {
+    function findUserByCredentials(username, password, req, res) {
         userModel
             .findUserByCreadentials(username, password)
             .then(function (user) {
+                //session
+                // req.session.currentUser = user;
                 res.json(user);
             },
             function (error) {
