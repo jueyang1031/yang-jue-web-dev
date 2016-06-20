@@ -52,3 +52,7 @@ input.ng-valid.ng-touched {
     background-color: rgba(120, 250, 137, 0.22);
 }
 
+.errorField {
+    color: #d9534f;
+}
+
