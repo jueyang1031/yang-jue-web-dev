@@ -4,10 +4,10 @@
 (function () {
 
     var messages = [
-        "Northeastern Student",
         "Full Stack Developer",
         "Minecraft Enthusiast",
-        "Nature lover"
+        "Nature lover",
+        "Northeastern Student"
     ];
 
     function nextMsg(i) {

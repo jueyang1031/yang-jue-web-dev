@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 // must after cookie, config to encrypt cookie
 // todo create a environment param in local machine and openshift
-app.use(session({ secret: "dhakhfakjd" }));
+app.use(session({ secret: process.env.SESSION_SECRET }));
 // must after session
 app.use(passport.initialize());
 app.use(passport.session());
