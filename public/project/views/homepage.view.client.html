@@ -1,0 +1,160 @@
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">FoodU</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                <a ng-show="!model.user" href="#/login" class="btn btn-success">Sign in</a>
+                </div>
+                <div class="form-group">
+                <a ng-show="!model.user" href="#/register" class="btn btn-primary">Sign up</a>
+                    </div>
+                <div class="form-group">
+                <label id="welcome" ng-show="model.user" >Welcome! </label>
+                <div ng-show="model.user" class="btn-group">
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{model.user.username}} <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/user/{{model.user._id}}">Profile</a></li>
+                        <li><a href="#">My basket</a></li>
+                        <li><a href="#">My meal plan</a></li>
+                    </ul>
+                </div>
+                    </div>
+                <<div class="form-group">
+                <a class="sign-out" ng-show="model.user" ng-click="model.logout()">Sign out</a>
+                </div>
+
+            </form>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
+
+
+<div id="frontImage">
+    <div id="frontImageOverlay">
+        <div class="container">
+        <h1>Track food. Track life.</h1>
+            <div class="row">
+            <div class="col-xs-4">
+                <div class="claimCircle a">
+                    <!--<img src="/application/frontend/images/recipe-card-white.svg" data-pagespeed-url-hash="3564119512" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">-->
+                    <i class="fa fa-search fa-5x fa-inverse" aria-hidden="true"></i>
+                    <p><a href="#/search">Search for nutrients of food</a></p>
+                    <i class="fa fa-play fa-inverse" aria-hidden="true"> see more</i>
+                </div>
+            </div>
+            <div class="col-xs-4" >
+                <div class="claimCircle b">
+                    <!--<img src="/application/frontend/images/meal-planner-white.svg" data-pagespeed-url-hash="2767456023" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" data-pin-nopin="true">-->
+                    <i class="fa fa-calendar-o fa-5x fa-inverse" aria-hidden="true"></i>
+                    <p><a href="">Meal planner and food tracker</a></p>
+                    <i class="fa fa-play fa-inverse" aria-hidden="true"> see more</i>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="claimCircle c" >
+                    <!--<img src="/application/frontend/images/basket-white.svg" data-pagespeed-url-hash="628358853" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" data-pin-nopin="true">-->
+                    <i class="fa fa-shopping-basket fa-5x fa-inverse" aria-hidden="true" ></i>
+                    <p><a href="">Create and collect food in basket</a></p>
+                    <i class="fa fa-play fa-inverse" aria-hidden="true"> see more</i>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section-a">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <a href="">
+                    <h2 class="section-heading">Search for nutrients of food</h2>
+
+                </a>
+                <p class="lead">
+                    Search thousand of food product and learn their ingredients and nutrients.
+                </p>
+            </div>
+            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                <br><br><br>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <img>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<div class="content-section-b">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                    <h2 class="section-heading">Meal planner and food tracker</h2>
+                <p class="lead">Add food product including homemade meals, store-bought products and basic foods to your meal calendar.
+                    Keep track of daily nutrients.
+                </p>
+            </div>
+            <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                <br><br><br>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <img>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <div class="content-section-a">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <a href="">
+                        <h2 class="section-heading">Create and collect food you like</h2>
+                    </a>
+                    <p class="lead">
+                        Collect food you like in the baskets or create customized food and save them to the baskets. Add them later into your meal plan.
+                    </p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <br><br><br>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <img>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+
+</nav>

@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Project Home Page</title>
+<html lang="en" ng-app="FoodTracker">
+<meta charset="UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport" content="initial-scale=1.25, user-scalable = no">
+<title>Project Home Page</title>
+<link href="../css/jquery-ui.css" rel="stylesheet"/>
+<script src="../js/jquery-1.12.4.min.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.1/textAngular-rangy.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.1/textAngular-sanitize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.1/textAngular.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.1/textAngular.min.css" rel="stylesheet"/>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"></html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link href="css/projectsStyle.css" rel="stylesheet"/></head>
+<link href="css/cover.css" rel="stylesheet"/></head>
+<link href="css/recipeWidgets.min.css" rel="stylesheet"/></head>
+<script src="app.js"></script>
+<script src="config.js"></script>
+<script src="views/user/login.controller.client.js"></script>
+<script src="views/homepage.controller.client.js"></script>
+<script src="views/user/profile.controller.client.js"></script>
+<script src="views/user/register.controller.client.js"></script>
+<script src="views/food/food-search.controller.client.js"></script>
+<script src="views/food/food-detail.controller.client.js"></script>
+<script src="service/user.service.client.js"></script>
+<script src="service/spoonacular.service.client.js"></script>
 </head>
 <body>
-    <h1>Project Home Page</h1>
+<div ng-view></div>
 </body>
 </html>

@@ -1,0 +1,42 @@
+<!--<div id="frontImage-login">-->
+    <!--<div id="frontImageOverlay-login">-->
+<style>
+    body {
+        background: url(../../../images/food-home.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        position: relative;
+        z-index: 10;
+        margin-bottom: 12px
+    }
+</style>
+
+
+        <div class="container">
+            <div class="form-signin">
+            <form name="form" novalidate>
+                <h1 class="form-signin-heading">Login</h1>
+                <div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>
+                <input ng-model="username" required name="username" type="text" placeholder="username"
+                       class="form-control">
+                <div class="errorField" ng-show="form.username.$touched && form.username.$invalid">username is
+                    required
+                </div>
+                <input ng-model="password" required name="password" type="password" placeholder="password"
+                       class="form-control">
+                <div class="errorField" ng-show="form.password.$touched && form.password.$invalid">password is
+                    required
+                </div>
+                <a ng-click="model.login(username, password)" class="btn btn-primary btn-block">Login</a>
+                <a href="/auth/ft/facebook" class="btn btn-info btn-block">
+                    <span class="fa fa-facebook-official"></span>
+                    Login with Facebook
+                </a>
+                <a class="sign-up" href="#/register">New to FoodU? Sign Up here!</a>
+            </form>
+        </div>
+</div>
+    <!--</div>-->
+<!--</div>-->

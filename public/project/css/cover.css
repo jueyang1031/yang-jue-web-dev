@@ -1,0 +1,99 @@
+#frontImage {
+    padding-top: 50px;
+    height: 100%;
+    width: 100%;
+    background: url(../../images/food-home.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-size: cover;
+    position: relative;
+    z-index: 10;
+    margin-bottom: 12px
+}
+
+#frontImageOverlay {
+    padding-top: 40px;
+    background-color: rgba(0, 0, 0, 0.27);
+    height: 100%
+}
+
+#frontImage h1 {
+    color: #fff;
+    font-weight: bold;
+    font-size: 60px;
+    text-align: center;
+    margin-bottom: 25px
+}
+
+.claimCircle.a:hover {
+    transition: .3s ease-out;
+    -webkit-transition: .3s ease-out;
+    background-color: rgba(0, 132, 60, .5)
+}
+
+.claimCircle.a {
+    transition: .3s ease-out;
+    -webkit-transition: .3s ease-out;
+    background-color: rgba(0, 132, 60, .2)
+}
+
+.claimCircle.b:hover {
+    transition: .3s ease-out;
+    -webkit-transition: .3s ease-out;
+    background-color: rgba(159, 68, 202, .5)
+}
+
+.claimCircle.b {
+    transition: .3s ease-out;
+    -webkit-transition: .3s ease-out;
+    background-color: rgba(159, 68, 202, .2)
+}
+
+.claimCircle.c:hover {
+    transition: .3s ease-out;
+    -webkit-transition: .3s ease-out;
+    background-color: rgba(236, 77, 0, .5)
+}
+
+.claimCircle.c {
+    transition: .3s ease-out;
+    -webkit-transition: .3s ease-out;
+    background-color: rgba(236, 77, 0, .2)
+}
+
+.claimCircle {
+    width: 260px;
+    height: 260px;
+    -moz-border-radius: 130px;
+    -webkit-border-radius: 130px;
+    border-radius: 130px;
+    border: 3px solid #fff;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer
+}
+
+.claimCircle a {
+    color: #fff;
+    text-decoration: none
+}
+
+.claimCircle .fa {
+    margin-top: 8%;
+    width: 40%;
+    max-height: 80px;
+}
+
+.claimCircle p {
+    color: #fff;
+    font-weight: bold;
+    margin-top: 10%;
+    width: 81%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 21px
+}

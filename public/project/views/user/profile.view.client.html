@@ -1,0 +1,78 @@
+<div id="nav-upnav" aria-hidden="true" class="navbar-fixed-top">
+</div>
+<nav class="navbar navbar-inverse navbar-fixed-top nav-my">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/home">FoodU</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <a ng-show="!model.user" href="#/login" class="btn btn-success">Sign in</a>
+                </div>
+                <div class="form-group">
+                    <a ng-show="!model.user" href="#/register" class="btn btn-primary">Sign up</a>
+                </div>
+                <div class="form-group">
+                    <label id="welcome" ng-show="model.user" >Welcome! </label>
+                    <div ng-show="model.user" class="btn-group">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{model.user.username}} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">My basket</a></li>
+                            <li><a href="#">My meal plan</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <<div class="form-group">
+                <a class="sign-out" ng-show="model.user" ng-click="model.logout()">Sign out</a>
+            </div>
+
+            </form>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
+
+<div class="container content">
+    <div ng-show="model.success" class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{model.success}}
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input ng-model="model.user.username" type="text" class="form-control" id="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input ng-model="model.user.email" type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
+        </div>
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input ng-model="model.user.firstName" type="text" class="form-control" id="first-name" placeholder="Alice">
+        </div>
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input ng-model="model.user.lastName" type="text" class="form-control" id="last-name" placeholder="Wonderland">
+        </div>
+    </form>
+
+    <a class="btn btn-success  btn-block"
+       ng-click="model.updateUser(model.user)">Save profile</a>
+    <br>
+    <a ng-click="model.deleteUser(model.user)">Unregister me</a>
+</div>
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container">
+        <div class="row navbar-text">
+        </div>
+    </div>
+</nav>
