@@ -15,9 +15,34 @@ module.exports = function () {
         findUserByUsername: findUserByUsername,
         deleteUser: deleteUser,
         updateUser: updateUser,
-        findUserByFacebookId: findUserByFacebookId
+        findUserByFacebookId: findUserByFacebookId,
+        pushMealPlan: pushMealPlan,
+        populateAllMealPlansForUser: populateAllMealPlansForUser
     };
     return api;
+
+    function populateAllMealPlansForUser(userId) {
+        return User
+            .findById(userId)
+            .populate('mealPlans')
+            .exec(
+        //         function (err, user) {
+        //         console.log(user.mealPlans);
+        // }
+            );
+    }
+    
+    function pushMealPlan(userId, mealPlan) {
+        return User
+            .findById(userId)
+            .then(function (user) {
+                user.mealPlans.push(mealPlan);
+                user.save(function(err,doc){});
+            },
+            function (error) {
+                
+            });
+    }
 
     function findUserByFacebookId(facebookId) {
         return User.findOne({'facebook.id': facebookId});

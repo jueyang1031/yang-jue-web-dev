@@ -17,9 +17,15 @@
             login: login,
             logout: logout,
             loggedIn: loggedIn,
-            register: register
+            register: register,
+            populateAllMealPlansForUser: populateAllMealPlansForUser
         };
         return api;
+        
+        function populateAllMealPlansForUser(userId) {
+            var url = "/api/ft/user/" + userId + "/mealPlans";
+            return $http.get(url);
+        }
         
         function register(user) {
             var url = "/api/ft/register";

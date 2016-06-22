@@ -6,6 +6,7 @@ module.exports = function () {
     var UserSchema = mongoose.Schema({
         username: String,
         password: String,
+        mealPlans: [{type: mongoose.Schema.ObjectId, ref: "MealPlan"}],
         facebook: {
             id:    String,
             token: String

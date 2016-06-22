@@ -8,6 +8,8 @@
     color: white;
     background: url("../images/main.png") no-repeat center;
     background-size: cover;
+    /*background-attachment: fixed;*/
+    /*background-size: cover;*/
 }
 
 .intro-pic {

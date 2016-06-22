@@ -62,6 +62,21 @@
                 controller: "FoodDetailController",
                 controllerAs: "model"
             })
+            .when("/user/:uid/mealPlan", {
+                templateUrl: "views/mealPlan/mealPlan-list.view.client.html",
+                controller: "MealPlanListController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/mealPlan/new", {
+                templateUrl: "views/mealPlan/mealPlan-new.view.client.html",
+                controller: "MealPlanNewController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/mealPlan/:mpid", {
+                templateUrl: "views/mealPlan/mealPlan-edit.view.client.html",
+                controller: "MealPlanEditController",
+                controllerAs: "model"
+            })
             .otherwise({
                 redirectTo: "/home"
             });

@@ -26,6 +26,8 @@ module.exports = function (app, models) {
     app.put("/api/ft/user/:userId", updateUser);
     app.delete("/api/ft/user/:userId", deleteUser);
 
+    app.get("/api/ft/user/:userId/mealPlans", populateAllMealPlansForUser);
+
     var facebookConfig = {
         clientID     : process.env.FACEBOOK_CLIENT_ID,
         clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
@@ -237,6 +239,19 @@ module.exports = function (app, models) {
             },
             function (error) {
                 res.sendStatus(404);
+            });
+    }
+    
+    function populateAllMealPlansForUser(req, res) {
+        var id = req.params.userId;
+        userModel
+            .populateAllMealPlansForUser(id)
+            .then(function (response) {
+                var mealPlans = response.mealPlans;
+                res.json(mealPlans);
+            },
+            function (error) {
+                res.status(404).send("Temporarily Cannot get meal plans");
             });
     }
 };
