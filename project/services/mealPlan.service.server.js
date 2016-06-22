@@ -10,12 +10,20 @@ module.exports = function (app, models) {
     app.post("/api/ft/user/:userId/mealPlan", createMealPlan);
     app.get("/api/ft/mealPlan/:mealPlanId", findMealPlanById);
     app.put("/api/ft/mealPlan/:mealPlanId", updateMealPlan);
-    app.delete("/api/ft/mealPlan/:mealPlanId", deleteMealPlan);
+    app.delete("/api/ft/user/:userId/mealPlan/:mealPlanId", deleteMealPlan);
     
     function deleteMealPlan(req, res) {
-        var id = req.params.mealPlanId;
-        mealPlanModel
-            .deleteMealPlan(id)
+        var mealPlanId = req.params.mealPlanId;
+        var userId = req.params.userId;
+        return userModel
+            .deleteMealPlan(userId, mealPlanId)
+            .then(function () {
+                return mealPlanModel
+                    .deleteMealPlan(mealPlanId);
+            },
+            function (error) {
+                res.status(400).send("Cannot delete meal plan from user");
+            })
             .then(function (response) {
                 res.sendStatus(200);
             },

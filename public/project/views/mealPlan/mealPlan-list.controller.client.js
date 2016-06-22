@@ -60,6 +60,7 @@
                 for (var i = 0; i < checkedMealPlanIds.length; ++i) {
                     if (checkedMealPlanIds[i] === mealPlanId){
                         checkedMealPlanIds.splice(i, 1);
+                        break;
                     }
                 }
             }
@@ -68,9 +69,9 @@
         function deleteMealPlans(userId) {
             checkedMealPlanIds.forEach(function (mealPlanId) {
                 MealPlanService
-                    .deleteMealPlan(mealPlanId)
+                    .deleteMealPlan(userId, mealPlanId)
                     .then(function (response) {
-                        $location.url("/user/" + vm.uid + "/mealPlan");
+                            init();
                     },
                     function (error) {
                         

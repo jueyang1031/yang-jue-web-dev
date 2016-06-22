@@ -15,8 +15,8 @@
         };
         return api;
         
-        function deleteMealPlan(mealPlanId) {
-            var url = "/api/ft/mealPlan/" + mealPlanId;
+        function deleteMealPlan(userId, mealPlanId) {
+            var url = "/api/ft/user/" + userId + "/mealPlan/" + mealPlanId;
             return $http.delete(url);
         }
         
