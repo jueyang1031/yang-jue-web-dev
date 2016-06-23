@@ -44,54 +44,141 @@
 </nav>
 <!-- end nav -->
 
-<div class="container content">
-    <div ng-show="model.error" class="alert alert-danger" role="alert" >{{model.error}}</div>
-    <form name="form" novalidate>
-        <div class="form-group">
-            <label for="datepicker">Plan Date</label>
-            <input ng-model="date" class="form-control" required type="text" id="datepicker" name="date">
-            <div class="errorField" ng-show="form.date.$touched && form.date.$invalid">date is required</div>
-        </div>
-        <div class="form-group">
-            <label for="title">Meal Plan Title</label>
-            <input ng-model="title" required name="title" type="text" class="form-control" id="title" placeholder="Title">
-            <div class="errorField" ng-show="form.title.$touched && form.title.$invalid">title is required</div>
-        </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea ng-model="description" rows="3" class="form-control" id="description" placeholder="Describe the plan...">
+<div class="row">
+    <div class="icon-bar col-xs-4 content fixed-side-bar">
+        <a class="active" href="#/user/{{model.uid}}/mealPlan"><i class="fa fa-list"></i></a>
+        <a ng-click="model.createMealPlan(date, title, description)"><i class="fa fa-floppy-o"></i></a>
+        <a ><i class="fa fa-arrow-left"></i></a>
+        <a ng-click="model.deleteMealPlans(model.uid)"><i class="fa fa-trash"></i></a>
+        <a href="#nav-upnav"><i class="fa fa-angle-double-up"></i></a>
+    </div>
+    <div class="meal-plan-list col-xs-12">
+        <div class="container content">
+            <div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>
+            <form name="form" novalidate>
+                <div class="form-group">
+                    <label for="datepicker">Plan Date</label>
+                    <input ng-model="date" class="form-control" required type="text" id="datepicker" name="date">
+                    <div class="errorField" ng-show="form.date.$touched && form.date.$invalid">date is required</div>
+                </div>
+                <div class="form-group">
+                    <label for="title">Meal Plan Title</label>
+                    <input ng-model="title" required name="title" type="text" class="form-control" id="title"
+                           placeholder="Title">
+                    <div class="errorField" ng-show="form.title.$touched && form.title.$invalid">title is required</div>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+            <textarea ng-model="description" rows="3" class="form-control" id="description"
+                      placeholder="Describe the plan...">
 
             </textarea>
+                </div>
+
+
+                <!--<div class="form-group">-->
+                <!--<a ng-click="model.createMealPlan(date, title, description)" class="btn btn-success btn-block">Save</a>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                <!--<a href="#/user/{{model.uid}}/mealPlan" class="btn btn-default btn-block">Cancel</a>-->
+                <!--</div>-->
+            </form>
+            <div>
+                <h4>Meals</h4>
+                <!--<a ng-click="model.addNewMeal()" ng-show="meal.mid==0" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i></a>-->
+                <a ng-click="model.addNewMeal()" class="btn btn-block btn-default">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Add meal</a>
+
+                <form name="mealForm" novalidate>
+                    <div ng-repeat="meal in model.meals" class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="form-group col-sm-2">
+                                    <!--<label for="timeSlot">Time slot</label>-->
+                                    <select ng-model="meal.timeSlot" class="form-control" id="timeSlot" name="timeSlot"
+                                            required>
+                                        <option value="morning">Morning</option>
+                                        <option value="noon">Noon</option>
+                                        <option value="evening">Evening</option>
+                                        <option value="snack">Snack</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-8">
+                                    <!--<label for="mealTitle">Title</label>-->
+                                    <input ng-model="meal.title" name="mealTitle" required type="text"
+                                           class="form-control"
+                                           id="mealTitle" placeholder="Title" value="Morning">
+
+                                </div>
+
+                                <div class="form-group col-sm-2">
+                                    <a ng-click="model.removeMeal(meal.mid)" class="btn btn-default"><i
+                                            class="fa fa-minus"
+                                            aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <h5>Search and add food</h5>
+                            <div class="input-group">
+                                <input ng-model="searchText" type="text" class="form-control"
+                                       placeholder="Search for...">
+                                    <span class="input-group-btn">
+                                        <button ng-click="model.searchProducts(0, searchText, meal.mid, 0)" class="btn btn-default" type="button"><span
+                                                class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                    </span>
+                            </div><!-- /input-group -->
+                            <table class="table table-condensed food-list">
+                                <tr ng-repeat="food in meal.foods">
+                                    <td>{{food.title}}</td>
+                                    <td><img ng-src="{{food.image}}" width="20%" ></td>
+                                </tr>
+                            </table>
+                            <!-- The Modal -->
+                            <div class="modal" ng-class="'meal{{meal.mid}}'">
+
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <span ng-click="model.hideSearch(meal.mid)" class="close">x</span>
+                                    <nav>
+                                        <ul class="pager">
+                                            <li><a ng-show="model.offset>0" ng-click="model.searchProducts(model.offset-10, searchText, meal.mid, 1)">Previous</a></li>
+                                            <li><a ng-show="model.offset<model.totalProducts" ng-click="model.searchProducts(model.offset+10, searchText, meal.mid, 1)">Next</a></li>
+                                        </ul>
+                                    </nav>
+
+                                    <div class="row search-result">
+                                        <div class="col-xs-12 col-xs-6 col-md-3" ng-repeat="product in model.productList">
+                                            <div ng-click="model.addFood(product, meal.mid)" class="thumbnail">
+                                                <img ng-click=""
+                                                     ng-src="{{product.image}}"
+                                                     width="50%"/>
+                                                <div class="caption">
+                                                    <p>{{product.title}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- end meal div -->
         </div>
-        <!--<div class="form-group">-->
-            <!--<label>Upload</label>-->
-            <!--<form action="/api/upload"  method="post" enctype="multipart/form-data">-->
-                <!--<input  name="myFile"   type="file" class="form-control"/>-->
-                <!--<input  name="name"    value="{{model.widget.name}}" style="display: none"/>-->
-                <!--<input  name="text"    value="{{model.widget.text}}" style="display: none"/>-->
-                <!--<input  name="width"    value="{{model.widget.width}}" style="display: none"/>-->
-                <!--<input  name="widgetId" value="{{model.widget._id}}"   style="display: none"/>-->
-                <!--<input  name="uid" value="{{model.uid}}"   style="display: none"/>-->
-                <!--<input  name="wid" value="{{model.wid}}"   style="display: none"/>-->
-                <!--<input  name="pid" value="{{model.pid}}"   style="display: none"/>-->
-                <!--<button type="submit"   class="btn btn-block btn-primary">Upload Image</button>-->
-            <!--</form>-->
-        <!--</div>-->
-        <div class="form-group">
-            <a ng-click="model.createMealPlan(date, title, description)" class="btn btn-success btn-block">Save</a>
-        </div>
-        <div class="form-group">
-            <a href="#/user/{{model.uid}}/mealPlan" class="btn btn-default btn-block">Cancel</a>
-        </div>
-    </form>
+    </div>
 </div>
+
+
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
 
 </nav>
 <script>
-    $(function() {
-        $( "#datepicker" ).datepicker({
+    $(function () {
+        $("#datepicker").datepicker({
             showOn: "button",
             buttonImage: "../../images/calendar-icon.png",
             buttonImageOnly: true,

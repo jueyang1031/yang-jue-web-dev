@@ -3,13 +3,14 @@
  */
 module.exports = function () {
     var mongoose = require("mongoose");
-    var UserSchema = mongoose.Schema({
+    var MealPlanSchema = mongoose.Schema({
         _user: {type: mongoose.Schema.ObjectId, ref: "User"},
         date: Date,
         title: String,
         description: String,
+        meals: [],
         dateCreated: {type: Date, default: Date.now}
     }, {collection: "project.mealPlan"});
 
-    return UserSchema;
+    return MealPlanSchema;
 };

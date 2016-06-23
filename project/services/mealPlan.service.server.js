@@ -61,7 +61,7 @@ module.exports = function (app, models) {
         var userId = req.params.userId;
         var mealPlan = req.body;
         mealPlan._user = userId;
-        mealPlanModel
+        return mealPlanModel
             .createMealPlanForUser(mealPlan)
             .then(function (mealPlan) {
                 if (mealPlan)
@@ -70,12 +70,6 @@ module.exports = function (app, models) {
                     res.status(400).send("Cannot create meal plan.");
 
             }, function (error) {
-                res.status(400).send("Cannot create meal plan.");
-            })
-            .then(function (response) {
-                res.json(mealPlan);
-            },
-            function (error) {
                 res.status(400).send("Cannot create meal plan.");
             });
     }
