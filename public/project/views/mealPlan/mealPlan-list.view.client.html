@@ -58,49 +58,87 @@
             <div ng-repeat="mealPlan in model.mealPlans | orderBy : 'date' : true" class="panel panel-success">
                 <!-- Default panel contents -->
                 <div class="accordion panel-heading">
-                    <h5><b>{{mealPlan.date}}</b> &nbsp &nbsp &nbsp {{mealPlan.title}}
+                    <h5 ng-click="model.getMealPlan(mealPlan._id)"><b>{{mealPlan.date}}</b> &nbsp &nbsp &nbsp
+                        {{mealPlan.title}}
                         <div class="pull-right">
-                            <input class="checkToDelete" ng-click="model.checkedMealPlan(mealPlan._id, $index)" type="checkbox">
+                            <input class="checkToDelete" ng-click="model.checkedMealPlan(mealPlan._id, $index)"
+                                   type="checkbox">
                         </div>
-                    <a href="#/user/{{model.uid}}/mealPlan/{{mealPlan._id}}">
-                        <i class="fa fa-pencil pull-right" aria-hidden="true"></i>
-                    </a>
+                        <a href="#/user/{{model.uid}}/mealPlan/{{mealPlan._id}}">
+                            <i class="fa fa-pencil pull-right" aria-hidden="true"></i>
+                        </a>
 
                     </h5>
                 </div>
                 <!--<div class="meal-plan-detail">-->
-                    <div class="panel-body">
-                        <p>{{mealPlan.description}}</p>
+                <div class="panel-body">
+                    <p>{{mealPlan.description}}</p>
 
-                    </div>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Time slot</th>
-                            <th>Food list</th>
-                        </tr>
-                        </thead>
-                        <tr>
-                            <td><i class="fa fa-coffee" aria-hidden="true"></i>Morning</td>
-                            <td><ul>
-                                <li>milk</li>
-                                <li>egg</li>
-                            </ul></td>
-                        </tr>
-                        <tr>
-                            <td><i class="fa fa-moon-o" aria-hidden="true"></i>Night</td>
-                            <td><ul>
-                                <li>chicken caesar salad</li>
-                                <li>tomato soup</li>
-                            </ul></td>
-                        </tr>
-                    </table>
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Time slot</th>
+                        <th>Title</th>
+                        <th>Food list</th>
+                    </tr>
+                    </thead>
+                    <tr ng-repeat="meal in mealPlan.meals">
+                        <td ng-switch="meal.timeSlot">
+                            <i ng-switch-when="morning" title="morning" class="slot fa fa-coffee"
+                               aria-hidden="true"></i>
+                            <i ng-switch-when="noon" title="noon" class="slot fa fa-sun-o" aria-hidden="true"></i>
+                            <i ng-switch-when="evening" title="evening" class="slot fa fa-cutlery"
+                               aria-hidden="true"></i>
+                            <i ng-switch-when="snack" title="snack" class="slot fa fa-glass" aria-hidden="true"></i>
+                        </td>
+                        <td>{{meal.title}}</td>
+                        <td>
+                            <ul>
+                                <li ng-repeat="food in meal.foods">
+                                    {{food.title}}
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
                 <!--</div>-->
             </div>
 
         </div>
     </div>
 </div>
+
+<div class="modal">
+
+    <div class="modal-content">
+        <span ng-click="model.hideSearch()" class="close">x</span>
+        <h3><b>{{model.mealPlan.date}}</b> &nbsp &nbsp &nbsp {{model.mealPlan.title}}
+        </h3>
+        <p>{{model.mealPlan.description}}</p>
+    <div ng-repeat="meal in model.mealPlan.meals" class="panel panel-default">
+        <div class="panel-heading">
+                <span ng-switch="meal.timeSlot">
+                    <i ng-switch-when="morning" title="morning" class="slot fa fa-coffee" aria-hidden="true">Morning</i>
+                    <i ng-switch-when="noon" title="noon" class="slot fa fa-sun-o" aria-hidden="true">Noon</i>
+                    <i ng-switch-when="evening" title="evening" class="slot fa fa-cutlery" aria-hidden="true">Evening</i>
+                    <i ng-switch-when="snack" title="snack" class="slot fa fa-glass" aria-hidden="true">Snack</i>
+                </span>
+
+            <h4>{{meal.title}}</h4>
+        </div>
+        <div class="panel-body">
+        <ul>
+            <li ng-repeat="food in meal.foods">
+                {{food.title}}
+                <img ng-src="{{food.image}}" width="30%">
+            </li>
+        </ul>
+        </div>
+    </div>
+    </div>
+</div>
+
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
 
 </nav>

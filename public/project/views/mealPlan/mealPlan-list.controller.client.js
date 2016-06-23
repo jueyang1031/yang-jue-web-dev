@@ -14,6 +14,11 @@
         vm.logout = logout;
         vm.checkedMealPlan = checkedMealPlan;
         vm.deleteMealPlans = deleteMealPlans;
+        vm.getMealPlan = getMealPlan;
+        vm.hideSearch = hideSearch;
+
+        // tooltip
+        $( ".slot" ).tooltip();
 
         function init() {
 
@@ -79,6 +84,19 @@
             });
         }
 
+        function getMealPlan(mealPlanId) {
+            for(var i = 0; i < vm.mealPlans.length; ++i) {
+                if (vm.mealPlans[i]._id === mealPlanId){
+                    vm.mealPlan = vm.mealPlans[i];
+                    $(".modal").show();
+                }
+            }
+        }
+
+        function hideSearch() {
+            $(".modal").hide();
+        }
+        
         function logout() {
             UserService
                 .logout()
