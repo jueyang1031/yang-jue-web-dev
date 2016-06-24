@@ -21,10 +21,9 @@
         vm.addFood = addFood;
         vm.showSearch = showSearch;
 
-        
         function saveMealPlan(mealPlan) {
             var validated = true;
-            if (!mealPlan.date || !mealPlan.title || mealPlan.meals.length==0)
+            if (!mealPlan || !mealPlan.date || !mealPlan.title || mealPlan.meals.length==0)
                 validated = false;
             mealPlan.meals.forEach(function (meal) {
                 if (!meal.timeSlot || !meal.title || meal.foods.length==0)

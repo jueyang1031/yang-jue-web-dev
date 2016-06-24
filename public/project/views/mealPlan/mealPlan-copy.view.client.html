@@ -49,13 +49,13 @@
         <a title="view meal plan list" class="active" href="#/user/{{model.uid}}/mealPlan"><i class="fa fa-list"></i></a>
         <a title="save meal plan" ng-click="model.saveMealPlan(model.mealPlan)"><i class="fa fa-floppy-o"></i></a>
         <a title="back to meal plan list" href="#/user/{{model.uid}}/mealPlan"><i class="fa fa-arrow-left"></i></a>
-        <a title="clear all" ng-click=""><i class="fa fa-trash"></i></a>
+        <a title="clear all" href="#/user/{{model.uid}}/mealPlan/new"><i class="fa fa-undo"></i></a>
         <a title="help" href=""><i class="fa fa-question-circle"></i></a>
     </div>
     <div class="meal-plan-list col-xs-12">
         <div class="container content">
             <div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>
-            <form name="form" novalidate>
+            <form id="form" name="form" novalidate>
                 <div class="form-group">
                     <label for="datepicker">Plan Date</label>
                     <input ng-model="model.mealPlan.date" class="form-control" required type="text" id="datepicker" name="date">
@@ -81,7 +81,7 @@
                 <a ng-click="model.addNewMeal()" class="btn btn-block btn-default">
                     <i class="fa fa-plus" aria-hidden="true"></i> Add meal</a>
 
-                <form name="mealForm" novalidate>
+                <form id="mealForm" name="mealForm" novalidate>
                     <div ng-repeat="meal in model.mealPlan.meals" class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">

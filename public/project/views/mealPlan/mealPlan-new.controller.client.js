@@ -22,6 +22,16 @@
         vm.hideSearch = hideSearch;
         vm.addFood = addFood;
         vm.showSearch = showSearch;
+        vm.resetForm = resetForm;
+
+        function resetForm() {
+            $('#form')[0].reset();
+            $('#mealForm')[0].reset();
+            vm.meals = [];
+            // $form.find('input:text, input:password, input:file, select, textarea').val('');
+            // $form.find('input:radio, input:checkbox')
+            //     .removeAttr('checked').removeAttr('selected');
+        }
 
         
         function addFood(food, mid) {
