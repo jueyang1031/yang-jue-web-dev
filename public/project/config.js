@@ -33,29 +33,18 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            .when("/user", {
-                templateUrl: "views/user/profile.view.client.html",
-                controller: "ProfileController",
-                controllerAs: "model"
-                // resolve: {
-                //     loggedIn: checkLoggedIn
-                // }
-            })
             .when("/user/:uid", {
                 templateUrl: "views/user/profile.view.client.html",
                 controller: "ProfileController",
-                controllerAs: "model"
-                // resolve: {
-                //     loggedIn: checkLoggedIn
-                // }
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
             })
             .when("/search", {
                 templateUrl: "views/food/food-search.view.client.html",
                 controller: "FoodSearchController",
                 controllerAs: "model"
-                // resolve: {
-                //     loggedIn: checkLoggedIn
-                // }
             })
             .when("/search/:pid", {
                 templateUrl: "views/food/food-detail.view.client.html",
@@ -65,30 +54,68 @@
             .when("/user/:uid/mealPlan", {
                 templateUrl: "views/mealPlan/mealPlan-list.view.client.html",
                 controller: "MealPlanListController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
             })
             .when("/user/:uid/mealPlan/new", {
                 templateUrl: "views/mealPlan/mealPlan-new.view.client.html",
                 controller: "MealPlanNewController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
             })
             .when("/user/:uid/mealPlan/copy/:mpid", {
                 templateUrl: "views/mealPlan/mealPlan-copy.view.client.html",
                 controller: "MealPlanCopyController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
             })
             .when("/user/:uid/mealPlan/search", {
                 templateUrl: "views/mealPlan/mealPlan-search.view.client.html",
                 controller: "MealPlanSearchController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
             })
             .when("/user/:uid/mealPlan/:mpid", {
                 templateUrl: "views/mealPlan/mealPlan-edit.view.client.html",
                 controller: "MealPlanEditController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
             })
             .otherwise({
-                redirectTo: "/home"
+                redirectTo: "/login"
             });
+
+        function checkLoggedIn(UserService, $location, $q, $rootScope) {
+
+            var deferred = $q.defer();
+
+            UserService
+                .loggedIn()
+                .then(function (response) {
+                        var user = response.data;
+                        if (user == '0') {
+                            $rootScope = null;
+                            deferred.reject();
+                            $location.url("/login")
+                        } else {
+                            $rootScope.currentUser = user;
+                            deferred.resolve();
+                        }
+                    },
+                    function (err) {
+                        $location.url("/login")
+                    });
+            return deferred.promise;
+        }
     }
 })();

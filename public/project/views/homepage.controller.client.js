@@ -38,10 +38,10 @@
             UserService
                 .logout()
                 .then(function (response) {
-                        $location.url("/home");
+                        init();
                     },
                     function (error) {
-                        $location.url("/home");
+                        init();
                     })
         }
     }
