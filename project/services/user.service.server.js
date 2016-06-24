@@ -9,6 +9,10 @@ var bcrypt = require("bcrypt-nodejs");
 module.exports = function (app, models) {
 
     var userModel = models.userModel;
+    var mealPlanModel = models.mealPlanModel;
+
+    var multer = require('multer'); // npm install multer --save
+    var upload = multer({dest: __dirname + '/../../public/uploads'});
 
     app.get("/auth/ft/facebook", passport.authenticate('facebook'), facebookLogIn);
     app.get('/auth/ft/facebook/callback',
@@ -27,6 +31,10 @@ module.exports = function (app, models) {
     app.delete("/api/ft/user/:userId", deleteUser);
 
     app.get("/api/ft/user/:userId/mealPlans", populateAllMealPlansForUser);
+    app.put("/api/ft/user/:userId/follow", addFollow);
+    app.put("/api/ft/user/:userId/unfollow", unFollow);
+
+    app.post("/api/ft/upload", upload.single('avatarFile'), uploadImage);
 
     var facebookConfig = {
         clientID     : process.env.FACEBOOK_CLIENT_ID,
@@ -170,14 +178,21 @@ module.exports = function (app, models) {
     function deleteUser(req, res) {
         var id = req.params.userId;
 
-        userModel
-            .deleteUser(id)
+        mealPlanModel
+            .deleteMealPlanByUserId(id)
             .then(function (stat) {
-                res.sendStatus(200);
-            }, 
+                return userModel.deleteUser(id);
+            },
             function (error) {
-                res.sendStatus(404);
-            });
+                res.status(400).send(error);
+            })
+            .then(function (stat) {
+                    res.sendStatus(200);
+                },
+                function (error) {
+                    res.status(400).send(error);
+                });
+
     }
 
     function updateUser(req, res) {
@@ -253,5 +268,58 @@ module.exports = function (app, models) {
             function (error) {
                 res.status(404).send("Temporarily Cannot get meal plans");
             });
+    }
+    
+    function addFollow(req, res) {
+        var userId = req.params.userId;
+        var followUser = req.body;
+        userModel
+            .addFollow(userId, followUser._id)
+            .then(function (stat) {
+                res.sendStatus(200);
+            },
+            function (error) {
+                res.status(400).send(error);
+            });
+    }
+
+    function unFollow(req, res) {
+        var userId = req.params.userId;
+        var followUser = req.body;
+        userModel
+            .unFollow(userId, followUser._id)
+            .then(function (stat) {
+                    res.sendStatus(200);
+                },
+                function (error) {
+                    res.status(400).send(error);
+                });
+    }
+
+    function uploadImage(req, res) {
+
+        var myFile = req.file;
+        var uid = req.body.uid;
+
+        if (myFile) {
+
+            var originalname = myFile.originalname; // file name on user's computer
+            var filename = myFile.filename;     // new file name in upload folder
+            var path = myFile.path;         // full path of uploaded file
+            var destination = myFile.destination;  // folder where file is saved to
+            var size = myFile.size;
+            var mimetype = myFile.mimetype;
+
+            userModel
+                .updateAvatar(uid, "/uploads/" + filename)
+                .then(function (stat) {
+                    res.sendStatus(200);
+                },
+                function (error) {
+                    res.status(400).send(error);
+                });
+        }
+
+        res.redirect("/project/#/user/" + uid);
     }
 };

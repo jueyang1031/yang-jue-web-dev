@@ -15,6 +15,8 @@ module.exports = function () {
         lastName: String,
         email: String,
         phone: String,
+        follows: [{type: mongoose.Schema.ObjectId, ref: "User"}],
+        avatar: String,
         dateCreated: {type: Date, default: Date.now}
     }, {collection: "project.user"});
 

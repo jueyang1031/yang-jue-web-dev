@@ -27,8 +27,8 @@
                             {{model.user.username}} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">My basket</a></li>
+                            <li><a href="#/user/{{model.uid}}">Profile</a></li>
+                            <li><a href="#/user/{{model.uid}}/mealPlan">My meal plan</a></li>
                             <li><a href="#">My meal plan</a></li>
                         </ul>
                     </div>
@@ -48,8 +48,8 @@
     <div class="icon-bar col-xs-4 content fixed-side-bar">
         <a class="active" href="#/user/{{model.uid}}/mealPlan"><i class="fa fa-list"></i></a>
         <a ng-click="model.createMealPlan(date, title, description)"><i class="fa fa-floppy-o"></i></a>
-        <a ><i class="fa fa-arrow-left"></i></a>
-        <a ng-click="model.deleteMealPlans(model.uid)"><i class="fa fa-trash"></i></a>
+        <a href="#/user/{{model.uid}}/mealPlan"><i class="fa fa-arrow-left"></i></a>
+        <a ><i class="fa fa-trash"></i></a>
         <a href="#nav-upnav"><i class="fa fa-angle-double-up"></i></a>
     </div>
     <div class="meal-plan-list col-xs-12">

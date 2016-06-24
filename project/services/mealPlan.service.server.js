@@ -10,7 +10,20 @@ module.exports = function (app, models) {
     app.post("/api/ft/user/:userId/mealPlan", createMealPlan);
     app.get("/api/ft/mealPlan/:mealPlanId", findMealPlanById);
     app.put("/api/ft/mealPlan/:mealPlanId", updateMealPlan);
+    app.get("/api/ft/user/:userId/mealPlan/search", findAllMealPlans);
     app.delete("/api/ft/user/:userId/mealPlan/:mealPlanId", deleteMealPlan);
+    
+    function findAllMealPlans(req, res) {
+        var userId = req.params.userId;
+        mealPlanModel
+            .findAllMealPlans(userId)
+            .then(function (mealPlans) {
+                res.json(mealPlans);
+            },
+            function (error) {
+                res.status(404).send(error);
+            });
+    }
     
     function deleteMealPlan(req, res) {
         var mealPlanId = req.params.mealPlanId;
@@ -64,8 +77,10 @@ module.exports = function (app, models) {
         return mealPlanModel
             .createMealPlanForUser(mealPlan)
             .then(function (mealPlan) {
-                if (mealPlan)
-                    return userModel.pushMealPlan(userId, mealPlan);
+                if (mealPlan) {
+                    userModel.pushMealPlan(userId, mealPlan);
+                    res.sendStatus(200);
+                }
                 else
                     res.status(400).send("Cannot create meal plan.");
 

@@ -18,9 +18,21 @@
             logout: logout,
             loggedIn: loggedIn,
             register: register,
-            populateAllMealPlansForUser: populateAllMealPlansForUser
+            populateAllMealPlansForUser: populateAllMealPlansForUser,
+            addFollow: addFollow,
+            unFollow: unFollow
         };
         return api;
+
+        function unFollow(userId, user) {
+            var url = "/api/ft/user/" + userId + "/unfollow";
+            return $http.put(url, user);
+        }
+        
+        function addFollow(userId, user) {
+            var url = "/api/ft/user/" + userId + "/follow";
+            return $http.put(url, user);
+        }
         
         function populateAllMealPlansForUser(userId) {
             var url = "/api/ft/user/" + userId + "/mealPlans";

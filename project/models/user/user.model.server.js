@@ -18,9 +18,53 @@ module.exports = function () {
         findUserByFacebookId: findUserByFacebookId,
         pushMealPlan: pushMealPlan,
         populateAllMealPlansForUser: populateAllMealPlansForUser,
-        deleteMealPlan: deleteMealPlan
+        deleteMealPlan: deleteMealPlan,
+        addFollow: addFollow,
+        unFollow: unFollow,
+        updateAvatar: updateAvatar
     };
     return api;
+    
+    function updateAvatar(userId, url) {
+        return User
+            .findById(userId)
+            .then(function (user) {
+                    user.avatar = url;
+                    user.save(function(err,doc){});
+                },
+                function (error) {
+
+                });
+    }
+    
+    function unFollow(userId, unfollowUserId) {
+        return User
+            .findById(userId)
+            .then(function (user) {
+                for (var i = 0; i < user.follows.length; ++i) {
+                    if (user.follows[i].toString() == unfollowUserId) {
+                        user.follows.splice(i, 1);
+                        user.save(function(err,doc){});
+                        break;
+                    }
+                }
+            },
+            function (error) {
+                
+            });
+    }
+    
+    function addFollow(userId, followUserId) {
+        return User
+            .findById(userId)
+            .then(function (user) {
+                    user.follows.push(followUserId);
+                    user.save(function(err,doc){});
+                },
+                function (error) {
+
+                });
+    }
     
     function deleteMealPlan(userId, mealPlanId) {
         return User
@@ -85,7 +129,10 @@ module.exports = function () {
     }
     
     function findUserById(userId) {
-        return User.findById(userId);
+        return User
+            .findById(userId)
+            .populate('follows')
+            .exec();
     }
 
     function createUser(user) {

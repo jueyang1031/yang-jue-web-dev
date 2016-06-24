@@ -20,6 +20,7 @@
                         var user = response.data;
                         if (user == '0') {
                             $rootScope = null;
+                            vm.user = null;
                         } else {
                             $rootScope.currentUser = user;
                             vm.user = user;

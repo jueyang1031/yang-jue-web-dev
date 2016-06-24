@@ -11,9 +11,15 @@
             createMealPlan: createMealPlan,
             findMealPlanById: findMealPlanById,
             updateMealPlan: updateMealPlan,
-            deleteMealPlan: deleteMealPlan
+            deleteMealPlan: deleteMealPlan,
+            findAllMealPlans: findAllMealPlans
         };
         return api;
+        
+        function findAllMealPlans(userId) {
+            var url = "/api/ft/user/" + userId + "/mealPlan/search";
+            return $http.get(url);
+        }
         
         function deleteMealPlan(userId, mealPlanId) {
             var url = "/api/ft/user/" + userId + "/mealPlan/" + mealPlanId;

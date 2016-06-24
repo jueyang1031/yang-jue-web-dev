@@ -130,8 +130,8 @@ input.ng-valid.ng-touched {
     position: fixed; /* Stay in place */
     z-index: 2; /* Sit on top */
     left: 0;
-    top: 0;
-    margin-left: 15px;
+    top: 10%;
+    /*margin-left: 10px;*/
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
@@ -145,7 +145,7 @@ input.ng-valid.ng-touched {
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 70%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -165,4 +165,33 @@ input.ng-valid.ng-touched {
 
 .panel-body .food-list {
     padding-top: 10px;
+}
+
+.meal-plan-list-filter {
+    padding: 10px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 50%;
+    border-radius: 5px;
+    margin: 15% auto; /* 15% from the top and centered */
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card img {
+    border-radius: 5px 5px 0 0;
+}
+
+.avatar {
+    display: block;
+    margin: 0 auto;
+}
+
+.profile-picture {
+    text-align: center;
 }

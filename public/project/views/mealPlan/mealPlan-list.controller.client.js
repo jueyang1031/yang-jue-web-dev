@@ -79,7 +79,7 @@
                             init();
                     },
                     function (error) {
-                        
+                        vm.error = "Cannot delete some meal plan."
                     });
             });
         }

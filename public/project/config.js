@@ -72,6 +72,16 @@
                 controller: "MealPlanNewController",
                 controllerAs: "model"
             })
+            .when("/user/:uid/mealPlan/copy/:mpid", {
+                templateUrl: "views/mealPlan/mealPlan-copy.view.client.html",
+                controller: "MealPlanCopyController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/mealPlan/search", {
+                templateUrl: "views/mealPlan/mealPlan-search.view.client.html",
+                controller: "MealPlanSearchController",
+                controllerAs: "model"
+            })
             .when("/user/:uid/mealPlan/:mpid", {
                 templateUrl: "views/mealPlan/mealPlan-edit.view.client.html",
                 controller: "MealPlanEditController",

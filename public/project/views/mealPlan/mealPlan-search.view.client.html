@@ -1,0 +1,82 @@
+<div id="nav-upnav" aria-hidden="true" class="navbar-fixed-top">
+</div>
+<nav class="navbar navbar-inverse navbar-fixed-top nav-my">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/home">FoodU</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <a ng-show="!model.user" href="#/login" class="btn btn-success">Sign in</a>
+                </div>
+                <div class="form-group">
+                    <a ng-show="!model.user" href="#/register" class="btn btn-primary">Sign up</a>
+                </div>
+                <div class="form-group">
+                    <label id="welcome" ng-show="model.user">Welcome! </label>
+                    <div ng-show="model.user" class="btn-group">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{model.user.username}} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#/user/{{model.uid}}">Profile</a></li>
+                            <li><a href="#/user/{{model.uid}}/mealPlan">My meal plan</a></li>
+                            <li><a href="#">My basket</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <
+                <div class="form-group">
+                    <a class="sign-out" ng-show="model.user" ng-click="model.logout()">Sign out</a>
+                </div>
+
+            </form>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
+<!-- end nav -->
+
+<div class="container content">
+    <nav>
+        <ul class="pager">
+            <li class="previous"><a href="#/user/{{model.uid}}/mealPlan"><span aria-hidden="true">&larr;</span> Back to meal plan</a></li>
+            <!--<li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>-->
+        </ul>
+    </nav>
+    <div class="row">
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" ng-repeat="mealPlan in model.mealPlans">
+            <div class="thumbnail">
+                <img>
+                <div class="caption">
+                    <h4>{{mealPlan.title}}</h4>
+                    <p>
+                        <p><b>{{mealPlan._user.username}}</b>
+                    <a ng-show="!mealPlan.follow" ng-click="model.addFollow(mealPlan._user)"><i class="fa fa-user-plus" aria-hidden="true"></i>
+                    </a>
+
+                        <a ng-show="mealPlan.follow" ng-click="model.unFollow(mealPlan._user)">
+                            <i class="fa fa-check" aria-hidden="true"></i>followed
+                        </a>
+                </p>
+                    </p>
+                    <p>{{mealPlan.description}}</p>
+                    <p><a href="#/user/{{model.uid}}/mealPlan/copy/{{mealPlan._id}}" role="button"><i class="fa fa-plus" aria-hidden="true"></i>
+                        copy to my meal plan</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+
+</nav>

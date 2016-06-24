@@ -13,9 +13,21 @@ module.exports = function () {
         findAllMealPlansForUser: findAllMealPlansForUser,
         findMealPlanById: findMealPlanById,
         updateMealPlan: updateMealPlan,
-        deleteMealPlan: deleteMealPlan
+        deleteMealPlan: deleteMealPlan,
+        findAllMealPlans: findAllMealPlans,
+        deleteMealPlanByUserId: deleteMealPlanByUserId
     };
     return api;
+    
+    function deleteMealPlanByUserId(userId) {
+        return MealPlan.remove({"_user": userId});
+    }
+    
+    function findAllMealPlans(userId) {
+        return MealPlan.find({"_user": {$ne: userId}})
+            .populate('_user')
+            .exec();
+    }
 
     function createMealPlanForUser(mealPlan) {
         return MealPlan.create(mealPlan);

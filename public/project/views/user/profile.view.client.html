@@ -3,7 +3,8 @@
 <nav class="navbar navbar-inverse navbar-fixed-top nav-my">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -20,21 +21,22 @@
                     <a ng-show="!model.user" href="#/register" class="btn btn-primary">Sign up</a>
                 </div>
                 <div class="form-group">
-                    <label id="welcome" ng-show="model.user" >Welcome! </label>
+                    <label id="welcome" ng-show="model.user">Welcome! </label>
                     <div ng-show="model.user" class="btn-group">
                         <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{model.user.username}} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">My basket</a></li>
+                            <li><a href="#/user/{{model.uid}}">Profile</a></li>
+                            <li><a href="#/user/{{model.uid}}/mealPlan">My meal plan</a></li>
                             <li><a href="#">My meal plan</a></li>
                         </ul>
                     </div>
                 </div>
-                <<div class="form-group">
-                <a class="sign-out" ng-show="model.user" ng-click="model.logout()">Sign out</a>
-            </div>
+                <
+                <div class="form-group">
+                    <a class="sign-out" ng-show="model.user" ng-click="model.logout()">Sign out</a>
+                </div>
 
             </form>
         </div><!--/.navbar-collapse -->
@@ -42,18 +44,30 @@
 </nav>
 
 <div class="container content">
-    <div ng-show="model.success" class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        {{model.success}}
-    </div>
+
+
+
     <form>
+        <div class="profile-picture">
+        <img ng-click="model.showModal()" ng-show="model.user.avatar" ng-src="{{model.user.avatar}}" class="img-thumbnail avatar img-responsive" width="20%">
+        <img ng-click="model.showModal()" ng-show="!model.user.avatar" src="../../../images/img_avatar.png" class="img-thumbnail avatar img-responsive" width="20%">
+            click picture to change avatar
+        </div>
+
+        <div ng-show="model.success" class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            {{model.success}}
+        </div>
         <div class="form-group">
             <label for="username">Username</label>
-            <input ng-model="model.user.username" type="text" class="form-control" id="username" placeholder="Username" disabled>
+            <input ng-model="model.user.username" type="text" class="form-control" id="username" placeholder="Username"
+                   disabled>
         </div>
         <div class="form-group">
             <label for="email">Email address</label>
-            <input ng-model="model.user.email" type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
+            <input ng-model="model.user.email" type="email" class="form-control" id="email"
+                   placeholder="alice@wonderland.com">
         </div>
         <div class="form-group">
             <label for="first-name">First Name</label>
@@ -61,7 +75,8 @@
         </div>
         <div class="form-group">
             <label for="last-name">Last Name</label>
-            <input ng-model="model.user.lastName" type="text" class="form-control" id="last-name" placeholder="Wonderland">
+            <input ng-model="model.user.lastName" type="text" class="form-control" id="last-name"
+                   placeholder="Wonderland">
         </div>
     </form>
 
@@ -69,10 +84,44 @@
        ng-click="model.updateUser(model.user)">Save profile</a>
     <br>
     <a ng-click="model.deleteUser(model.user)">Unregister me</a>
-</div>
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
-    <div class="container">
-        <div class="row navbar-text">
+
+    <h3>Follows</h3>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="follow in model.user.follows">
+            <div class="card">
+                <img ng-show="follow.avatar" ng-src="{{follow.avatar}}" alt="Avatar" width="100%">
+                <img ng-show="!follow.avatar" src="../../../images/img_avatar.png" width="100%">
+                <div class="container">
+                    <p><b>{{follow.username}}</b>
+                        <a ng-click="model.unFollow(follow)">
+                            <i class="fa fa-check" aria-hidden="true"></i>followed
+                        </a>
+                    </p>
+                    <p>{{follow.firstName}} {{follow.lastName}}</p>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
+<div class="modal">
+    <div class="modal-content">
+        <span ng-click="model.hideModal()" class="close">x</span>
+        <h3>change photo</h3>
+        <form action="/api/ft/upload"  method="post" enctype="multipart/form-data">
+            <input  name="avatarFile"   type="file" class="form-control"/>
+            <!--<input  name="name"    value="{{model.widget.name}}" style="display: none"/>-->
+            <!--<input  name="text"    value="{{model.widget.text}}" style="display: none"/>-->
+            <!--<input  name="width"    value="{{model.widget.width}}" style="display: none"/>-->
+            <!--<input  name="widgetId" value="{{model.widget._id}}"   style="display: none"/>-->
+            <input  name="uid" value="{{model.uid}}"   style="display: none"/>
+            <!--<input  name="wid" value="{{model.wid}}"   style="display: none"/>-->
+            <!--<input  name="pid" value="{{model.pid}}"   style="display: none"/>-->
+            <button type="submit"   class="btn btn-block btn-success">Upload Image</button>
+        </form>
+    </div>
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+
 </nav>

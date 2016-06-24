@@ -84,14 +84,14 @@
         
         function createMealPlan(date, title, description) {
             var validated = true;
-            if (!date || !title ||!description || vm.meals.length==0)
+            if (!date || !title || vm.meals.length==0)
                 validated = false;
             vm.meals.forEach(function (meal) {
                 if (!meal.timeSlot || !meal.title || meal.foods.length==0)
                     validated = false;
             });
             if (!validated) {
-                vm.error = "Please fill empty fields. And please add at least on meal and at least on food";
+                vm.error = "Please fill empty fields. And please add at least one meal and at least one food";
                 return;
             }
             var mealPlan = {

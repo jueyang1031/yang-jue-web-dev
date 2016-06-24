@@ -4,36 +4,25 @@
 (function () {
     angular
         .module("FoodTracker")
-        .controller("MealPlanEditController", MealPlanEditController);
+        .controller("MealPlanCopyController", MealPlanCopyController);
 
-    function MealPlanEditController($location, UserService, $rootScope, $routeParams, MealPlanService, SpoonacularService) {
+    function MealPlanCopyController($location, UserService, $rootScope, $routeParams, MealPlanService, SpoonacularService) {
         var vm = this;
         vm.uid = $routeParams.uid;
         vm.mpid = $routeParams.mpid;
         vm.user = $rootScope.currentUser;
         vm.offset = 0;
         vm.logout = logout;
-        vm.updateMealPlan = updateMealPlan;
+        vm.saveMealPlan = saveMealPlan;
         vm.addNewMeal = addNewMeal;
         vm.removeMeal = removeMeal;
         vm.searchProducts = searchProducts;
         vm.hideSearch = hideSearch;
         vm.addFood = addFood;
         vm.showSearch = showSearch;
-        vm.deleteMealPlan = deleteMealPlan;
+
         
-        function deleteMealPlan(mealPlanId) {
-            MealPlanService
-                .deleteMealPlan(vm.uid, mealPlanId)
-                .then(function (response) {
-                        $location.url("/user/" + vm.uid + "/mealPlan")
-                    },
-                    function (error) {
-                        vm.error = "Cannot delete some meal plan."
-                    });
-        }
-        
-        function updateMealPlan(mealPlan) {
+        function saveMealPlan(mealPlan) {
             var validated = true;
             if (!mealPlan.date || !mealPlan.title || mealPlan.meals.length==0)
                 validated = false;
@@ -45,13 +34,15 @@
                 vm.error = "Please fill empty fields. And please add at least one meal and at least one food";
                 return;
             }
+            delete mealPlan._id;
+
             MealPlanService
-                .updateMealPlan(vm.mpid, mealPlan)
+                .createMealPlan(vm.uid, mealPlan)
                 .then(function (response) {
                         $location.url("/user/" + vm.uid + "/mealPlan");
                     },
                     function (error) {
-                        vm.error = "Unable to update mealPlan."
+                        vm.error = "Unable to create meal plan";
                     });
         }
 
@@ -72,10 +63,8 @@
                         $location.url("/home")
                     });
 
-            var mpid = $routeParams.mpid;
-
             MealPlanService
-                .findMealPlanById(mpid)
+                .findMealPlanById(vm.mpid)
                 .then(function (response) {
                     vm.mealPlan = response.data;
                     vm.mealPlan.date = vm.mealPlan.date.substring(0, vm.mealPlan.date.indexOf("T"));
