@@ -29,7 +29,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="#/user/{{model.uid}}">My profile</a></li>
                             <li><a href="#/user/{{model.uid}}/mealPlan">My meal plan</a></li>
-                            <li><a href="basket">My basket</a></li>
+                            <li><a href="">My basket</a></li>
                         </ul>
                     </div>
                 </div>
@@ -46,11 +46,11 @@
 
 <div class="row">
     <div class="icon-bar col-xs-4 content fixed-side-bar">
-        <a class="active" href="#/user/{{model.uid}}/mealPlan"><i class="fa fa-list"></i></a>
-        <a ng-click="model.createMealPlan(date, title, description)"><i class="fa fa-floppy-o"></i></a>
-        <a href="#/user/{{model.uid}}/mealPlan"><i class="fa fa-arrow-left"></i></a>
-        <a ><i class="fa fa-trash"></i></a>
-        <a href="#nav-upnav"><i class="fa fa-angle-double-up"></i></a>
+        <a title="view meal plan list" class="active" href="#/user/{{model.uid}}/mealPlan"><i class="fa fa-list"></i></a>
+        <a title="save meal plan" ng-click="model.createMealPlan(date, title, description)"><i class="fa fa-floppy-o"></i></a>
+        <a title="back to meal plan list" href="#/user/{{model.uid}}/mealPlan"><i class="fa fa-arrow-left"></i></a>
+        <a title="clear all"><i class="fa fa-trash"></i></a>
+        <a title="help" href=""><i class="fa fa-question-circle"></i></a>
     </div>
     <div class="meal-plan-list col-xs-12">
         <div class="container content">
