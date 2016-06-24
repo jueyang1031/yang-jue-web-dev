@@ -16,6 +16,8 @@
         vm.hideUser = hideUser;
         vm.addFollow = addFollow;
         vm.unFollow = unFollow;
+        vm.getMealPlan = getMealPlan;
+        vm.hideSearch = hideSearch;
 
         function init() {
 
@@ -43,6 +45,7 @@
                         .then(function (response) {
                                 vm.mealPlans = response.data;
                                 for(var j = 0; j < vm.mealPlans.length; ++j) {
+                                    vm.mealPlans[j].date = vm.mealPlans[j].date.substring(0, vm.mealPlans[j].date.indexOf("T"));
                                     for(var i = 0; i < vm.user.follows.length; ++i) {
                                         if (vm.mealPlans[j]._user
                                             && (vm.user.follows[i]._id === vm.mealPlans[j]._user._id)) {
@@ -108,5 +111,17 @@
                     });
         }
 
+        function getMealPlan(mealPlanId) {
+            for(var i = 0; i < vm.mealPlans.length; ++i) {
+                if (vm.mealPlans[i]._id === mealPlanId){
+                    vm.mealPlan = vm.mealPlans[i];
+                    $(".modal").show();
+                }
+            }
+        }
+
+        function hideSearch() {
+            $(".modal").hide();
+        }
     }
 })();

@@ -56,7 +56,8 @@
             <div class="thumbnail">
                 <img>
                 <div class="caption">
-                    <h4>{{mealPlan.title}}</h4>
+                    <h4 ng-click="model.getMealPlan(mealPlan._id)">{{mealPlan.title}}
+                    </h4>
                     <p>
                         <p><b>{{mealPlan._user.username}}</b>
                     <a ng-show="!mealPlan.follow" ng-click="model.addFollow(mealPlan._user)"><i class="fa fa-user-plus" aria-hidden="true"></i>
@@ -71,6 +72,35 @@
                     <p><a href="#/user/{{model.uid}}/mealPlan/copy/{{mealPlan._id}}" role="button"><i class="fa fa-plus" aria-hidden="true"></i>
                         copy to my meal plan</a></p>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal">
+    <div class="modal-content">
+        <span ng-click="model.hideSearch()" class="close">x</span>
+        <h3><b>{{model.mealPlan.date}}</b> &nbsp &nbsp &nbsp {{model.mealPlan.title}}
+        </h3>
+        <p>{{model.mealPlan.description}}</p>
+        <div ng-repeat="meal in model.mealPlan.meals" class="panel panel-default">
+            <div class="panel-heading">
+                <span ng-switch="meal.timeSlot">
+                    <i ng-switch-when="morning" title="morning" class="slot fa fa-coffee" aria-hidden="true">Morning</i>
+                    <i ng-switch-when="noon" title="noon" class="slot fa fa-sun-o" aria-hidden="true">Noon</i>
+                    <i ng-switch-when="evening" title="evening" class="slot fa fa-cutlery" aria-hidden="true">Evening</i>
+                    <i ng-switch-when="snack" title="snack" class="slot fa fa-glass" aria-hidden="true">Snack</i>
+                </span>
+
+                <h4>{{meal.title}}</h4>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li ng-repeat="food in meal.foods">
+                        {{food.title}}
+                        <img ng-src="{{food.image}}" width="30%">
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
