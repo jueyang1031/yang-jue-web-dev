@@ -59,14 +59,14 @@
 
         <input ng-model="searchText" type="text" class="form-control" placeholder="Search for...">
       <span class="input-group-btn">
-        <button ng-click="model.searchProducts(0, searchText)" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+        <button ng-click="model.searchProducts(0, searchText, 0)" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
       </span>
     </div><!-- /input-group -->
 
     <nav>
         <ul class="pager">
-            <li><a ng-show="model.offset>0" ng-click="model.searchProducts(model.offset-10, searchText)">Previous</a></li>
-            <li><a ng-show="model.offset<model.totalProducts" ng-click="model.searchProducts(model.offset+10, searchText)">Next</a></li>
+            <li><a ng-show="model.offset>0" ng-click="model.searchProducts(model.offset-30, searchText, 1)">Previous</a></li>
+            <li><a ng-show="model.offset<model.totalProducts" ng-click="model.searchProducts(model.offset+30, searchText, 1)">Next</a></li>
         </ul>
     </nav>
 

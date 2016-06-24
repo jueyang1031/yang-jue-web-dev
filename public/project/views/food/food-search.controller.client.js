@@ -44,17 +44,16 @@
                 })
         }
         
-        function searchProducts(offset, searchText) {
+        function searchProducts(offset, searchText, start) {
             vm.offset = offset;
+            if (start === 0)
+                vm.offset = 0;
             var offsetString = vm.offset + "";
             SpoonacularService
                 .searchProducts(offsetString, searchText)
                 .then(function(response) {
                     var data = response.data.products;
                     vm.totalProducts = response.data.totalProducts;
-                    // data = data.substring(0,data.length - 1);
-                    console.log(data);
-                    // data = JSON.parse(data);
                     vm.productList = data;
                 });
         }

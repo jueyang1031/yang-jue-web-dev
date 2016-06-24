@@ -15,7 +15,8 @@ module.exports = function () {
         findUserByUsername: findUserByUsername,
         deleteUser: deleteUser,
         updateUser: updateUser,
-        findUserByFacebookId: findUserByFacebookId,
+        // findUserByFacebookId: findUserByFacebookId,
+        findUserByGoogleId: findUserByGoogleId,
         pushMealPlan: pushMealPlan,
         populateAllMealPlansForUser: populateAllMealPlansForUser,
         deleteMealPlan: deleteMealPlan,
@@ -102,8 +103,12 @@ module.exports = function () {
             });
     }
 
-    function findUserByFacebookId(facebookId) {
-        return User.findOne({'facebook.id': facebookId});
+    // function findUserByFacebookId(facebookId) {
+    //     return User.findOne({'facebook.id': facebookId});
+    // }
+
+    function findUserByGoogleId(googleId) {
+        return User.findOne({'google.id': googleId});
     }
 
     function updateUser(id, user) {

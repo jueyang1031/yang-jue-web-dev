@@ -3,7 +3,8 @@
  */
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var FacebookStrategy = require('passport-facebook').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+// var FacebookStrategy = require('passport-facebook').Strategy;
 var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function (app, models) {
@@ -14,11 +15,17 @@ module.exports = function (app, models) {
     var multer = require('multer'); // npm install multer --save
     var upload = multer({dest: __dirname + '/../../public/uploads'});
 
-    app.get("/auth/ft/facebook", passport.authenticate('facebook'), facebookLogIn);
-    app.get('/auth/ft/facebook/callback',
-        passport.authenticate('facebook', {
-            successRedirect: '/assignment/#/user',
-            failureRedirect: '/assignment/#/login'
+    // app.get("/auth/ft/facebook", passport.authenticate('facebook'), facebookLogIn);
+    // app.get('/auth/ft/facebook/callback',
+    //     passport.authenticate('facebook', {
+    //         successRedirect: '/assignment/#/user',
+    //         failureRedirect: '/assignment/#/login'
+    //     }));
+    app.get("/auth/google", passport.authenticate('google', { scope : ['profile', 'email'] }));
+    app.get('/auth/google/callback',
+        passport.authenticate('google', {
+            successRedirect: '/project/#/home',
+            failureRedirect: '/project/#/login'
         }));
     app.post("/api/ft/user", createUser);
     app.post("/api/ft/logout", logout);
@@ -36,15 +43,22 @@ module.exports = function (app, models) {
 
     app.post("/api/ft/upload", upload.single('avatarFile'), uploadImage);
 
-    var facebookConfig = {
-        clientID     : process.env.FACEBOOK_CLIENT_ID,
-        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+    // var facebookConfig = {
+    //     clientID     : process.env.FACEBOOK_CLIENT_ID,
+    //     clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+    //     callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+    // };
+
+    var googleConfig = {
+        clientID        : process.env.GOOGLE_CLIENT_ID,
+        clientSecret    : process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL     : process.env.GOOGLE_CALLBACK_URL
     };
 
     // if it is default 'local', no need to provide 'local', if others, must provide
     passport.use('local', new LocalStrategy(localStrategy));
-    passport.use('facebook', new FacebookStrategy(facebookConfig, facebookLogIn));
+    // passport.use('facebook', new FacebookStrategy(facebookConfig, facebookLogIn));
+    passport.use('google', new GoogleStrategy(googleConfig, googleLogIn));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
@@ -85,22 +99,22 @@ module.exports = function (app, models) {
             );
     }
     
-    function facebookLogIn(token, refreshToken, profile, done) {
+    function googleLogIn(token, refreshToken, profile, done) {
         userModel
-            .findUserByFacebookId(profile.id)
-            .then(function (facebookUser) {
-                if (facebookUser) {
-                    return done(null, facebookUser);
+            .findUserByGoogleId(profile.id)
+            .then(function (googleUser) {
+                if (googleUser) {
+                    return done(null, googleUser);
                 } else {
-                    facebookUser = {
+                    googleUser = {
                         "username": profile.displayName.replace(/ /g, ''),
-                        "facebook" : {
+                        "google" : {
                             "id": profile.id,
                             "token": token
                         }
                     };
                     userModel
-                        .createUser(facebookUser)
+                        .createUser(googleUser)
                         .then(function (user) {
                             done(null, user);
                         });

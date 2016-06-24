@@ -26,7 +26,7 @@
         }
         
         function searchProducts(offset, searchText) {
-            var url = urlBase.replace("NUMBER", "10").replace("OFFSET", offset).replace("TEXT", searchText);
+            var url = urlBase.replace("NUMBER", "30").replace("OFFSET", offset).replace("TEXT", searchText);
             return $http.get(url, {
                 headers: {'X-Mashape-Key': key}
             });
