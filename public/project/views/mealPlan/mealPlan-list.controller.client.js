@@ -17,9 +17,6 @@
         vm.getMealPlan = getMealPlan;
         vm.hideSearch = hideSearch;
 
-        // tooltip
-        $( ".slot" ).tooltip();
-
         function init() {
 
             UserService
@@ -45,6 +42,7 @@
                     results.forEach(function (mealPlan) {
                         mealPlan.date = mealPlan.date.substring(0, mealPlan.date.indexOf("T"));
                         vm.mealPlans.push(mealPlan);
+
                     })
                 },
                 function (error) {
@@ -107,5 +105,6 @@
                         $location.url("/home");
                     })
         }
+
     }
 })();

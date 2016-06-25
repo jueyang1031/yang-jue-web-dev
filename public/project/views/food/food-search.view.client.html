@@ -28,7 +28,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="#/user/{{model.user._id}}">My profile</a></li>
                             <li><a href="#/user/{{model.user._id}}/mealPlan">My meal plan</a></li>
-                            <li><a href="">My basket</a></li>
+                            <li><a href="#/help">Help</a></li>
                         </ul>
                     </div>
                 </div>
@@ -75,12 +75,12 @@
         <div class="thumbnail">
         <img ng-click=""
              ng-src="{{product.image}}"
-             width="100%"/>
+             width="80%"/>
         <div class="caption">
             <p>{{product.title}}</p>
         </div>
             <div >
-                <a href="#/search/{{product.id}}">
+                <a ng-click="model.jumpToProduct(product.id)">
                     <i class="fa fa-info-circle" aria-hidden="true"></i>
                     View Product</a>
             </div>
@@ -89,6 +89,32 @@
 </div>
 </div>
 
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
+<div class="modal">
+    <div class="modal-content">
+        <span ng-click="model.hideSearch()" class="close">x</span>
+        <!--<div class="container content">-->
+            <ul class="pager">
+                <!--<li class="previous"><a href="#/search"><span aria-hidden="true">&larr;</span> Back to search</a></li>-->
+                <!--<li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>-->
+            </ul>
+            <div class="thumbnail">
+                <img ng-src="{{model.productDetail.images[0]}}" width="50%">
+                <div class="caption">
+                    <h3>{{model.productDetail.title}}</h3>
+                    <div ng-bind-html="model.getSafeHtml(model.productDetail.nutrition_widget)"></div>
+                </div>
+            </div>
+            <br>
+        <!--</div>-->
+    </div>
+</div>
 
+<nav class="navbar navbar-inverse navbar-fixed-bottom footer">
+    <div class="container">
+        <h5>Connect me</h5>
+        <a href="https://github.com/jueyang1031/yang-jue-web-dev"><i class="fa fa-github" aria-hidden="true"></i> Github</a>
+        <a href="https://www.linkedin.com/in/jue-yang-61a91890" ><i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn</a>
+        <a ><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a>
+        <a href="mailto:yang.jue@husky.neu.edu" ><i class="fa fa-envelope" aria-hidden="true"></i> Email</a>
+    </div>
 </nav>

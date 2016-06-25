@@ -18,6 +18,11 @@
                 controller: "HomepageController",
                 controllerAs: "model"
             })
+            .when("/help", {
+                templateUrl: "views/help/help.view.client.html",
+                controller: "HelpController",
+                controllerAs: "model"
+            })
             .when("/home/:uid", {
                 templateUrl: "views/homepage.view.client.html",
                 controller: "HomepageController",

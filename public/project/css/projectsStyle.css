@@ -85,7 +85,7 @@ input.ng-valid.ng-touched {
 
 .content {
     padding-top: 120px;
-    padding-bottom: 60px;
+    padding-bottom: 100px;
 }
 
 .search-result {
@@ -195,4 +195,15 @@ input.ng-valid.ng-touched {
 
 .profile-picture {
     text-align: center;
+}
+
+.footer {
+    padding: 10px;
+    color: #dedede;
+}
+
+.help {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 130px;
 }

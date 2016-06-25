@@ -29,7 +29,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="#/user/{{model.uid}}">My profile</a></li>
                             <li><a href="#/user/{{model.uid}}/mealPlan">My meal plan</a></li>
-                            <li><a href="">My basket</a></li>
+                            <li><a href="#/help">Help</a></li>
                         </ul>
                     </div>
                 </div>
@@ -78,9 +78,6 @@
             <div>
                 <h4>Meals</h4>
                 <!--<a ng-click="model.addNewMeal()" ng-show="meal.mid==0" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i></a>-->
-                <a ng-click="model.addNewMeal()" class="btn btn-block btn-default">
-                    <i class="fa fa-plus" aria-hidden="true"></i> Add meal</a>
-
                 <form id="mealForm" name="mealForm" novalidate>
                     <div ng-repeat="meal in model.meals" class="panel panel-default">
                         <div class="panel-heading">
@@ -157,17 +154,24 @@
                         </div>
                     </div>
                 </form>
+                <a ng-click="model.addNewMeal()" class="btn btn-block btn-default">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Add meal</a>
             </div>
             <!-- end meal div -->
         </div>
     </div>
 </div>
 
-
-
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
-
+<nav class="navbar navbar-inverse navbar-fixed-bottom footer">
+    <div class="container">
+        <h5>Connect me</h5>
+        <a href="https://github.com/jueyang1031/yang-jue-web-dev"><i class="fa fa-github" aria-hidden="true"></i> Github</a>
+        <a href="https://www.linkedin.com/in/jue-yang-61a91890" ><i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn</a>
+        <a ><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a>
+        <a href="mailto:yang.jue@husky.neu.edu" ><i class="fa fa-envelope" aria-hidden="true"></i> Email</a>
+    </div>
 </nav>
+
 <script>
     $(function () {
         $("#datepicker").datepicker({

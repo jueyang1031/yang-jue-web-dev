@@ -6,14 +6,18 @@
         .module("FoodTracker")
         .controller("FoodSearchController", FoodSearchController);
 
-    function FoodSearchController($location, UserService, $rootScope, SpoonacularService) {
+    function FoodSearchController($location, UserService, $rootScope, SpoonacularService, FoodessentialsService, $sce) {
         var vm = this;
 
         vm.user = $rootScope.currentUser;
         vm.logout = logout;
         vm.searchProducts = searchProducts;
         vm.jumpToProduct = jumpToProduct;
+        vm.getSafeHtml = getSafeHtml;
+        vm.hideSearch = hideSearch;
         vm.offset = 0;
+
+        vm.food = food;
 
         function init() {
 
@@ -36,12 +40,20 @@
 
         init();
 
+        function getSafeHtml(html) {
+            return $sce.trustAsHtml(html);
+        }
+
         function jumpToProduct(id) {
             SpoonacularService
                 .jumpToProduct(id)
                 .then(function (response) {
                     vm.productDetail = response.data;
-                })
+                    $('.modal').show();
+                },
+                function (error) {
+                    
+                });
         }
         
         function searchProducts(offset, searchText, start) {
@@ -67,6 +79,19 @@
                     function (error) {
                         $location.url("/home");
                     })
+        }
+
+        function hideSearch() {
+            $(".modal").hide();
+        }
+        
+        function food() {
+            FoodessentialsService
+                .createSession()
+                .then(function (response) {
+                     vm.data = response.data;
+                    
+                })
         }
     }
 })();

@@ -1,0 +1,117 @@
+<div id="nav-upnav" aria-hidden="true" class="navbar-fixed-top">
+</div>
+<nav class="navbar navbar-inverse navbar-fixed-top nav-my">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/home">FoodU</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <a ng-show="!model.user" href="#/login" class="btn btn-success">Sign in</a>
+                </div>
+                <div class="form-group">
+                    <a ng-show="!model.user" href="#/register" class="btn btn-primary">Sign up</a>
+                </div>
+                <div class="form-group">
+                    <label id="welcome" ng-show="model.user" >Welcome! </label>
+                    <div ng-show="model.user" class="btn-group">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{model.user.username}} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#/user/{{model.user._id}}">My profile</a></li>
+                            <li><a href="#/user/{{model.user._id}}/mealPlan">My meal plan</a></li>
+                            <li><a href="#/help">Help</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <<div class="form-group">
+                <a class="sign-out" ng-show="model.user" ng-click="model.logout()">Sign out</a>
+            </div>
+
+            </form>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
+
+<div class="container content help">
+<div id="introduction">
+    <h3>What is FoodU?</h3>
+    <p><b>FoodU</b> is an one-stop online web application food explorer and trackers. Shoppers could search for store food products to learn ingredients and nutrients
+        knowledge.</p>
+    <p>Athletes, dietitians or users who are in fitness or on a diet could record and plan their meal to track daily
+        nutrients intake. Users share and explore healthy meal plan on FoodU in order to pursue a healthier life.</p>
+</div>
+<div id="searchProduct">
+    <h4>Search Product</h4>
+    <p>Clicking on "<a href="#/search">Search for nutrients of food</a>" on homepage, you could enter any text in search box to search for food product.
+    If there are matched products, they will be showed below. Browse the list and click on "<i class="fa fa-info-circle" aria-hidden="true"></i> view product" to view details including
+    nutrients fact.</p>
+    <img src="../../../images/searchProduct.png" width="40%">
+</div>
+<div id="listMealPlan">
+    <h4>Meal Plan List</h4>
+    <p>After <a href="#/login">login</a> to FoodU, you will be able to view and edit your meal plans. Meal plans are listed in descending order of plan date.
+        Click on "<a href="#/user/{{model.user._id}}/mealPlan">Meal planner and food tracker</a>"
+    on homepage or click through "My meal plan" under your username to view all your meal plans. To view the meal plan detail, click on the title.</p>
+    <img src="../../../images/listMealPlan.png" width="40%">
+</div>
+<div id="newMealPlan">
+    <h4>Create New Meal Plan</h4>
+    <p>Click on the <i class="fa fa-plus fa-2x" aria-hidden="true"></i> in the side bar of meal plan list to <a href="#/user/{{model.user._id}}/mealPlan/new"> create a new meal plan</a>.
+        Plan Date and Meal Plan Title are required. Click on <a class="btn btn-default">
+    <i class="fa fa-plus" aria-hidden="true"></i> Add meal</a> to add meal to the plan. Click on <a class="btn btn-default"><i
+        class="fa fa-minus" aria-hidden="true"></i></a> next each meal to remove it from plan. You must add at least on meal for the meal plan.
+        Each meal must have a time slot and meal title. Search and select food to add it to the meal. There must be at least one food for the meal.
+    Click on <i class="fa fa-floppy-o fa-2x" aria-hidden="true"></i> on the side bar to save the meal plan. Click on <i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i>
+    or <i class="fa fa-list fa-2x" aria-hidden="true"></i> to back to meal plan list. Click on <i class="fa fa-undo fa-2x" aria-hidden="true"></i> to clear the form.</p>
+</div>
+<div id="editMealPlan">
+    <h4>Edit Meal Plan</h4>
+    <p>From the meal plan list, click on <i class="fa fa-pencil fa-2x" aria-hidden="true"></i> next to meal plan title to edit it.
+        Click on <i class="fa fa-floppy-o fa-2x" aria-hidden="true"></i> on the side bar to save the meal plan. Click on <i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i>
+        or <i class="fa fa-list fa-2x" aria-hidden="true"></i> to back to meal plan list. </p>
+    <img src="../../../images/editMealPlan.png" width="40%">
+</div>
+<div id="deleteMealPlan">
+    <h4>Delete Meal Plan</h4>
+    <p>Check one or more meal plans on meal plan list and click on <i class="fa fa-trash fa-2x" aria-hidden="true"></i> to delete multiple plans.
+        Or in the meal plan edit, click on <i class="fa fa-trash fa-2x" aria-hidden="true"></i> to delete current plan.
+    </p>
+</div>
+<div id="searchCopyMealPlan">
+    <h4>Search and Copy meal plan</h4>
+    <p>In meal plan list, click on <i class="fa fa-search fa-2x" aria-hidden="true"></i> on side bar to <a href="#/user/{{model.user._id}}/mealPlan/search"> search for all meal plans</a>
+    created by other users. view the plan detail and click on "<i class="fa fa-plus" aria-hidden="true"></i> copy to my meal plan". Modify the plan
+    on your requirements and save the plan.</p>
+</div>
+    <div id="profile">
+        <h4>Profile</h4>
+        <p>After <a href="#/login">login</a> to FoodU, you could view and edit your profile click on <a href="#/user/{{model.user._id}}">My profile</a> under your username.
+            Click the picture to change your avatar. </p>
+        <img src="../../../images/searchMealPlan.png" width="40%">
+    </div>
+    <div id="follow">
+        <h4>Follow and Unfollow</h4>
+        <p>Users that you are following are listed in your profile below to basic information. Click on <i class="fa fa-check" aria-hidden="true"></i> followed
+         to unfollow certain user. Or, in meal plan search, add new user to follow by clicking on <i class="fa fa-user-plus" aria-hidden="true"></i> next to username.</p>
+        <img src="../../../images/profile.png" width="40%">
+    </div>
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom footer">
+    <div class="container">
+        <h5>Connect me</h5>
+        <a href="https://github.com/jueyang1031/yang-jue-web-dev"><i class="fa fa-github" aria-hidden="true"></i> Github</a>
+        <a href="https://www.linkedin.com/in/jue-yang-61a91890" ><i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn</a>
+        <a ><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a>
+        <a href="mailto:yang.jue@husky.neu.edu" ><i class="fa fa-envelope" aria-hidden="true"></i> Email</a>
+    </div>
+</nav>
