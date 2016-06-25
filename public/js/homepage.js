@@ -5,7 +5,6 @@
 
     var messages = [
         "Full Stack Developer",
-        "Minecraft Enthusiast",
         "Nature lover",
         "Northeastern Student"
     ];

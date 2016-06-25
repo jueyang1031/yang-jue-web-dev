@@ -36,9 +36,10 @@
 }
 .intro-text {
     margin: auto;
+    text-align: center;
     position: relative;
     color: white;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #777;
     font-size: 200%;
     font-weight: 400;
     /*height: 26%;*/

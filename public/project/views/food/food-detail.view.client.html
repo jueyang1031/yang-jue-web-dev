@@ -41,6 +41,10 @@
     </div>
 </nav>
 <div class="container content">
+    <ul class="pager">
+        <li class="previous"><a href="#/search"><span aria-hidden="true">&larr;</span> Back to search</a></li>
+        <!--<li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>-->
+    </ul>
     <div class="thumbnail">
         <img ng-src="{{model.productDetail.images[0]}}">
         <div class="caption">
@@ -48,8 +52,6 @@
             <div ng-bind-html="model.getSafeHtml(model.productDetail.nutrition_widget)"></div>
         </div>
     </div>
-    <a class="btn btn-default btn-block"
-       href="#/search">Back to search</a>
     <br>
 </div>
 

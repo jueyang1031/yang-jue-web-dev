@@ -8,85 +8,120 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href="css/homepage.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"></html>
+    <link href="css/homepage1.css" rel="stylesheet"/>
+    <!--<link href="css/homepage.css" rel="stylesheet"/>-->
     <script src="js/jquery-1.12.4.min.js"></script>
     <script src="js/homepage.js"></script>
     <title> Home Page</title>
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Home</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="#about">About me</a></li>
-                <li><a href="#project">Project</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <!--<li class="dropdown">-->
-                <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
-                <!--<ul class="dropdown-menu">-->
-                <!--<li><a href="#">Project</a></li>-->
-                <!--<li><a href="#">Assignment</a></li>-->
-                <!--<li><a href="#">Test</a></li>-->
-                <!--<li role="separator" class="divider"></li>-->
-                <!--<li class="dropdown-header">Nav header</li>-->
-                <!--<li><a href="#">Separated link</a></li>-->
-                <!--<li><a href="#">One more separated link</a></li>-->
-                <!--</ul>-->
-                <!--</li>-->
-            </ul>
-        </div><!--/.nav-collapse -->
+
+<div class="bgimg-1">
+    <!--<i class="fa fa-plus-square fa-5x" aria-hidden="true"></i>-->
+    <div class="caption">
+        <span class="border">Jue Yang</span>
+        <br>
+        <br>
+        <br>
+        <span id="introMessage" class="intro">Northeastern Student</span>
     </div>
-</nav>
-<!--<div class="row">-->
-<div class="intro-header">
-    <div class="">
+</div>
+
+<div class="about-me">
+    <h3 style="text-align:center;">About me</h3>
+    <p>I am currently pursing Master of Computer Science master in Northeastern University.
+        I am a software engineer with various technical skills concentrating on area of Web development, Data management and processing.
+        Cooking and travel are my two great interests in life. I am a national park geek who love exploring the beauty of nature.
+    </p>
+</div>
+
+<div class="bgimg-2">
+    <div class="caption">
+        <span class="border" style="background-color:transparent;font-size:35px;color: white;">PROJECTS</span>
+    </div>
+</div>
+
+<div style="position:relative;">
+    <div class="project">
+        <div class="section-1">
+
+            <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <a href="#">
+                    <iframe width="100%" height="305" src="https://www.youtube.com/embed/PyMalvUdMV4" frameborder="0" allowfullscreen></iframe>
+                </a>
+            </div>
+            <div class=" col-xs-12 col-sm-6">
+                <h2 class="media-heading"><a href="project/index.html">FoodU</a></h2>
+                <p>A one-stop online web application food explorer and trackers. Shoppers could search for store food products to learn ingredients and nutrients
+                knowledge.</p>
+
+                <p>Athletes, dietitians or users who are in fitness or on a diet could record and plan their meal to track daily
+                nutrients intake. Users share and explore healthy meal plan.</p>
+
+                <p>Techniques set:
+                    HTML5,
+                    CSS,
+                    JavaScript,
+                    jQuery,
+                    AJAX,
+                    AngularJs,
+                    Node.js,
+                    REST,
+                    MongoDB</p>
+                <p><a>Project design and development document</a></p>
+            </div>
+            </div>
+
+        </div>
+        <div class="section-2">
         <div class="row">
-            <div class="col-sm-12">
-                <div class="intro-pic">
-                    <img id="imgme" class="img" src="images/me.jpg" width="150" height="190">
-                </div>
+            <div class="col-xs-12 col-sm-6">
+                <h2 class="media-heading"><a href="assignment/index.html">Web App Maker</a></h2>
+                <p>A web application that allows developer build websites with pages and a variety of widgets including
+                    text, html ,image, youtube, etc.</p>
+                <p>Techniques set:
+                    HTML5,
+                    CSS,
+                    JavaScript,
+                    jQuery,
+                    AJAX,
+                    AngularJs,
+                    Node.js,
+                    REST,
+                    MongoDB</p>
+                <!--<p><a>Project design and development document</a></p>-->
             </div>
-            <div class="col-sm-12">
-                <div class="intro-message">
-                    <p id="myName">Jue Yang</p>
-                    <div class="intro-text">
-                        <p>
-                        <span id="introMessage">Northeastern Student</span>
-                            </p>
-                    </div>
-                </div>
+            <div class="col-xs-12 col-sm-6">
+                <a href="#">
+                    <iframe width="100%" height="305" src="https://www.youtube.com/embed/PyMalvUdMV4" frameborder="0" allowfullscreen></iframe>
+                </a>
             </div>
+        </div>
         </div>
     </div>
 </div>
 
-<div class="main-content">
-    <div class="container"></div>
-    <div class="row" id="project">
-        <ul>
-            <li>
-                <a href="project/index.html">Project</a>
-            </li>
-            <li>
-                <a href="assignment/index.html">Assignment</a>
-            </li>
-            <li>
-                <a href="test/index.html">Test MongoDB</a>
-            </li>
-            <li>
-                <a href="#">Your public repository at GitHub.com</a>
-            </li>
-        </ul>
+<div class="bgimg-3">
+    <div class="caption">
+        <span class="quote">“You are not here merely to make a living. You are here in order to enable the world to live more amply,with greater vision, with a finer spirit of hope and achievement. You are here to enrich the world and you impoverish yourself if you forget that errand.”
+<p>– Woodrow Wilson</p></span>
+    </div>
+</div>
+
+<div style="position:relative;">
+    <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+        <p>Scroll up and down to really get the feeling of how Parallax Scrolling works.</p>
+    </div>
+</div>
+
+<div class="bgimg-1">
+    <div class="caption">
+        <a href="https://github.com/jueyang1031/yang-jue-web-dev" class="btn btn-default btn-lg"><i class="fa fa-github" aria-hidden="true"></i> Github</a>
+        <a href="https://www.linkedin.com/in/jue-yang-61a91890" class="btn btn-default btn-lg"><i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn</a>
+        <a class="btn btn-default btn-lg"><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a>
+        <a href="mailto:yang.jue@husky.neu.edu" class="btn btn-default btn-lg"><i class="fa fa-envelope" aria-hidden="true"></i> Email</a>
     </div>
 </div>
 

@@ -16,7 +16,6 @@
         vm.offset = 0;
 
         function getSafeHtml(html) {
-            console.log(html);
             return $sce.trustAsHtml(html);
         }
 
