@@ -12,10 +12,21 @@
     <link href="css/homepage1.css" rel="stylesheet"/>
     <!--<link href="css/homepage.css" rel="stylesheet"/>-->
     <script src="js/jquery-1.12.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
     <script src="js/homepage.js"></script>
     <title> Home Page</title>
 </head>
 <body>
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="#about-me">About me</a>
+    <a href="#projects">Projects</a>
+    <!--<a href="#">Clients</a>-->
+    <a href="#contact">Contact</a>
+</div>
+<!--<span style="font-size:30px;cursor:pointer;background-color: transparent" onclick="openNav()">+</span>-->
+<div class="open-sidebar"><i onclick="openNav()" class="fa fa-bars fa-3x" aria-hidden="true"></i></div>
 
 <div class="bgimg-1">
     <!--<i class="fa fa-plus-square fa-5x" aria-hidden="true"></i>-->
@@ -28,15 +39,15 @@
     </div>
 </div>
 
-<div class="about-me">
+<div id="about-me" class="about-me">
     <h3 style="text-align:center;">About me</h3>
-    <p>I am currently pursing Master of Computer Science master in Northeastern University.
+    <p>I am currently pursing Master of Computer Science in Northeastern University.
         I am a software engineer with various technical skills concentrating on area of Web development, Data management and processing.
         Cooking and travel are my two great interests in life. I am a national park geek who love exploring the beauty of nature.
     </p>
 </div>
 
-<div class="bgimg-2">
+<div id="projects" class="bgimg-2">
     <div class="caption">
         <span class="border" style="background-color:transparent;font-size:35px;color: white;">PROJECTS</span>
     </div>
@@ -116,7 +127,7 @@
     </div>
 </div>
 
-<div class="bgimg-1">
+<div id="contact" class="bgimg-1">
     <div class="caption">
         <a href="https://github.com/jueyang1031/yang-jue-web-dev" class="btn btn-default btn-lg"><i class="fa fa-github" aria-hidden="true"></i> Github</a>
         <a href="https://www.linkedin.com/in/jue-yang-61a91890" class="btn btn-default btn-lg"><i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn</a>
@@ -124,6 +135,14 @@
         <a href="mailto:yang.jue@husky.neu.edu" class="btn btn-default btn-lg"><i class="fa fa-envelope" aria-hidden="true"></i> Email</a>
     </div>
 </div>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
 
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
 </body>
 </html>
