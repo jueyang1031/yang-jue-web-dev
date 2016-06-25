@@ -56,6 +56,12 @@
     nutrients fact.</p>
     <img src="../../../images/searchProduct.png" width="40%">
 </div>
+    <div id="sign">
+        <h4>Sign in, Sign up and Sign out</h4>
+        <p>From the top navigation bar, click on <a href="#/login">Sign in</a> to login to FoodU or click on <a href="#/register">Sign up</a> to
+            register a new FoodU account. After login, you could access to meal planner. To sign out, click on <a>Sign out</a> next to username in
+        the navigation bar.</p>
+    </div>
 <div id="listMealPlan">
     <h4>Meal Plan List</h4>
     <p>After <a href="#/login">login</a> to FoodU, you will be able to view and edit your meal plans. Meal plans are listed in descending order of plan date.
@@ -65,30 +71,30 @@
 </div>
 <div id="newMealPlan">
     <h4>Create New Meal Plan</h4>
-    <p>Click on the <i class="fa fa-plus fa-2x" aria-hidden="true"></i> in the side bar of meal plan list to <a href="#/user/{{model.user._id}}/mealPlan/new"> create a new meal plan</a>.
+    <p>Click on the <i class="fa fa-plus" aria-hidden="true"></i> in the side bar of meal plan list to <a href="#/user/{{model.user._id}}/mealPlan/new"> create a new meal plan</a>.
         Plan Date and Meal Plan Title are required. Click on <a class="btn btn-default">
     <i class="fa fa-plus" aria-hidden="true"></i> Add meal</a> to add meal to the plan. Click on <a class="btn btn-default"><i
         class="fa fa-minus" aria-hidden="true"></i></a> next each meal to remove it from plan. You must add at least on meal for the meal plan.
         Each meal must have a time slot and meal title. Search and select food to add it to the meal. There must be at least one food for the meal.
-    Click on <i class="fa fa-floppy-o fa-2x" aria-hidden="true"></i> on the side bar to save the meal plan. Click on <i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i>
-    or <i class="fa fa-list fa-2x" aria-hidden="true"></i> to back to meal plan list. Click on <i class="fa fa-undo fa-2x" aria-hidden="true"></i> to clear the form.</p>
+    Click on <i class="fa fa-floppy-o" aria-hidden="true"></i> on the side bar to save the meal plan. Click on <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    or <i class="fa fa-list" aria-hidden="true"></i> to back to meal plan list. Click on <i class="fa fa-undo" aria-hidden="true"></i> to clear the form.</p>
 </div>
 <div id="editMealPlan">
     <h4>Edit Meal Plan</h4>
-    <p>From the meal plan list, click on <i class="fa fa-pencil fa-2x" aria-hidden="true"></i> next to meal plan title to edit it.
-        Click on <i class="fa fa-floppy-o fa-2x" aria-hidden="true"></i> on the side bar to save the meal plan. Click on <i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i>
-        or <i class="fa fa-list fa-2x" aria-hidden="true"></i> to back to meal plan list. </p>
+    <p>From the meal plan list, click on <i class="fa fa-pencil" aria-hidden="true"></i> next to meal plan title to edit it.
+        Click on <i class="fa fa-floppy-o" aria-hidden="true"></i> on the side bar to save the meal plan. Click on <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        or <i class="fa fa-list" aria-hidden="true"></i> to back to meal plan list. </p>
     <img src="../../../images/editMealPlan.png" width="40%">
 </div>
 <div id="deleteMealPlan">
     <h4>Delete Meal Plan</h4>
-    <p>Check one or more meal plans on meal plan list and click on <i class="fa fa-trash fa-2x" aria-hidden="true"></i> to delete multiple plans.
-        Or in the meal plan edit, click on <i class="fa fa-trash fa-2x" aria-hidden="true"></i> to delete current plan.
+    <p>Check one or more meal plans on meal plan list and click on <i class="fa fa-trash" aria-hidden="true"></i> to delete multiple plans.
+        Or in the meal plan edit, click on <i class="fa fa-trash" aria-hidden="true"></i> to delete current plan.
     </p>
 </div>
 <div id="searchCopyMealPlan">
     <h4>Search and Copy meal plan</h4>
-    <p>In meal plan list, click on <i class="fa fa-search fa-2x" aria-hidden="true"></i> on side bar to <a href="#/user/{{model.user._id}}/mealPlan/search"> search for all meal plans</a>
+    <p>In meal plan list, click on <i class="fa fa-search" aria-hidden="true"></i> on side bar to <a href="#/user/{{model.user._id}}/mealPlan/search"> search for all meal plans</a>
     created by other users. view the plan detail and click on "<i class="fa fa-plus" aria-hidden="true"></i> copy to my meal plan". Modify the plan
     on your requirements and save the plan.</p>
 </div>
