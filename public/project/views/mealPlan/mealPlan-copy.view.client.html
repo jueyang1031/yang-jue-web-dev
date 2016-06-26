@@ -124,6 +124,7 @@
                                 <tr ng-repeat="food in meal.foods">
                                     <td>{{food.title}}</td>
                                     <td><img ng-src="{{food.image}}" width="20%" ></td>
+                                    <td ng-click="model.removeFood(food.id, meal.mid)"><i class="fa fa-times" aria-hidden="true"></i></td>
                                 </tr>
                             </table>
                             <!-- The Modal -->

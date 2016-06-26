@@ -20,6 +20,21 @@
         vm.hideSearch = hideSearch;
         vm.addFood = addFood;
         vm.showSearch = showSearch;
+        vm.removeFood = removeFood;
+
+        function removeFood(foodId, mid) {
+            for (var i = 0; i < vm.meals.length; ++i) {
+                if (vm.meals[i].mid === mid) {
+                    for (var j = 0; j < vm.meals[i].foods.length; ++j) {
+                        if (vm.meals[i].foods[j].id === foodId) {
+                            vm.meals[i].foods.splice(j, 1);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
 
         function saveMealPlan(mealPlan) {
             var validated = true;

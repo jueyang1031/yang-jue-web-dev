@@ -121,6 +121,7 @@
                                 <tr ng-repeat="food in meal.foods">
                                     <td>{{food.title}}</td>
                                     <td><img ng-src="{{food.image}}" width="20%" ></td>
+                                    <td ng-click="model.removeFood(food.id, meal.mid)"><i class="fa fa-times" aria-hidden="true"></i></td>
                                 </tr>
                             </table>
                             <!-- The Modal -->
@@ -139,8 +140,7 @@
                                     <div class="row search-result">
                                         <div class="col-xs-12 col-xs-6 col-md-3" ng-repeat="product in model.productList">
                                             <div ng-click="model.addFood(product, meal.mid)" class="thumbnail">
-                                                <img ng-click=""
-                                                     ng-src="{{product.image}}"
+                                                <img ng-src="{{product.image}}"
                                                      width="50%"/>
                                                 <div class="caption">
                                                     <p>{{product.title}}</p>
