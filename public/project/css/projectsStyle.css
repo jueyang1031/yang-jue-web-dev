@@ -207,3 +207,8 @@ input.ng-valid.ng-touched {
     padding-right: 15px;
     padding-bottom: 130px;
 }
+
+.ingredient {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

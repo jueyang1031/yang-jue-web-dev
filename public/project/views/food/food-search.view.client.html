@@ -42,26 +42,24 @@
 </nav>
 
 <div class="container-fluid content">
-    <div class="input-group">
-        <div class="input-group-btn">
-    <div class="dropdown">
-
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Store food
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="">Store food</a></li>
-            <li><a href="">Basic food</a></li>
-        </ul>
-        </div>
+    <form class="form-inline">
+    <div class="form-group">
+        <select ng-model="type" class="form-control">
+            <option value="product" selected>grocery food</option>
+            <option value="recipe">meal recipe</option>
+        </select>
     </div>
+        <div class="form-group">
+    <div class="input-group">
 
-        <input ng-model="searchText" type="text" class="form-control" placeholder="Search for...">
+        <input ng-model="searchText" type="text" class="form-control" placeholder="Search for food name...">
       <span class="input-group-btn">
-        <button ng-click="model.searchProducts(0, searchText, 0)" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+        <button ng-click="model.searchProducts(0, searchText, 0, type)" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
       </span>
     </div><!-- /input-group -->
+
+        </div>
+    </form>
 
     <nav>
         <ul class="pager">
@@ -80,7 +78,7 @@
             <p>{{product.title}}</p>
         </div>
             <div >
-                <a ng-click="model.jumpToProduct(product.id)">
+                <a ng-click="model.jumpToProduct(product.id, type)">
                     <i class="fa fa-info-circle" aria-hidden="true"></i>
                     View Product</a>
             </div>
@@ -100,7 +98,33 @@
             <div class="thumbnail">
                 <img ng-src="{{model.productDetail.images[0]}}" width="50%">
                 <div class="caption">
-                    <h3>{{model.productDetail.title}}</h3>
+                    <h2>{{model.productDetail.title}}</h2>
+                    <span ng-show="model.productDetail.vegetarian"><img src="../../../images/vegetarian.svg"> vegetarian</span>
+                    <span ng-show="model.productDetail.veryHealthy"><img src="../../../images/protein.svg"> healthy</span>
+                    <span ng-show="model.productDetail.glutenFree"><img src="../../../images/gluten-free.svg"> gluten-free</span>
+                    <span ng-show="model.productDetail.dairyFree"><img src="../../../images/dairy-free.svg"> dairy-free</span>
+                    <div class="ingredient">
+                        <h3>Ingredients</h3>
+                        <div class="row">
+                            <div class="col-xs-6 col-xs-4" ng-repeat="ingredient in model.productDetail.extendedIngredients">
+                                <img ng-src="{{ingredient.image}}" width="40px" height="40px">
+                                {{ingredient.name}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nutrition">
+                        <h3 id="anchorNutrition">Nutritional Information</h3>
+                        <div class="spoonacular-caption">Quickview</div>
+                        <div ng-repeat="nutrition in model.productDetail.nutrition.nutrients">
+                        <div class="spoonacular-nutrient-name">{{nutrition.title}}</div>
+                        <div class="spoonacular-nutrient-value">{{nutrition.amount}} {{nutrition.unit}}</div>
+                            <span title="limit this" ng-show="nutrition.title=='Calories' || nutrition.title=='Fat'
+                            || nutrition.title=='Saturated Fat' || nutrition.title=='Carbohydrates' || nutrition.title=='Sodium'
+                            || nutrition.title=='Sugar' || nutrition.title=='Cholesterol'">
+                                <i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+                            <br>
+                        </div>
+                    </div>
                     <div ng-bind-html="model.getSafeHtml(model.productDetail.nutrition_widget)"></div>
                 </div>
             </div>

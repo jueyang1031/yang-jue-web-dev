@@ -24,11 +24,11 @@
         vm.removeFood = removeFood;
 
         function removeFood(foodId, mid) {
-            for (var i = 0; i < vm.meals.length; ++i) {
-                if (vm.meals[i].mid === mid) {
-                    for (var j = 0; j < vm.meals[i].foods.length; ++j) {
-                        if (vm.meals[i].foods[j].id === foodId) {
-                            vm.meals[i].foods.splice(j, 1);
+            for (var i = 0; i < vm.mealPlan.meals.length; ++i) {
+                if (vm.mealPlan.meals[i].mid === mid) {
+                    for (var j = 0; j < vm.mealPlan.meals[i].foods.length; ++j) {
+                        if (vm.mealPlan.meals[i].foods[j].id === foodId) {
+                            vm.mealPlan.meals[i].foods.splice(j, 1);
                             break;
                         }
                     }
@@ -123,28 +123,47 @@
         }
 
         function addFood(food, mid) {
+            var foodBrief = {
+                id: food.id,
+                image: food.image,
+                title: food.title
+            };
             for (var i = 0; i < vm.mealPlan.meals.length; ++i) {
                 if (vm.mealPlan.meals[i].mid === mid) {
-                    vm.mealPlan.meals[i].foods.push(food);
+                    vm.mealPlan.meals[i].foods.push(foodBrief);
                     break;
                 }
             }
             hideSearch(mid);
         }
 
-        function searchProducts(offset, searchText, mid, start) {
+        function searchProducts(offset, searchText, mid, start, type) {
             vm.offset = offset;
             if (start === 0) vm.offset = 0;
             var offsetString = vm.offset + "";
+            if (type == "product")
+                vm.type = "product";
+            else if (type == "recipe") {
+                vm.type = "recipe";
+            }
             SpoonacularService
-                .searchProducts(offsetString, searchText)
+                .searchProducts(offsetString, searchText, type)
                 .then(function(response) {
-                    var data = response.data.products;
-                    vm.totalProducts = response.data.totalProducts;
-                    // data = data.substring(0,data.length - 1);
-                    console.log(data);
-                    // data = JSON.parse(data);
-                    vm.productList = data;
+                    if (type == "product") {
+                        var data = response.data.products;
+                        vm.totalProducts = response.data.totalProducts;
+                        vm.productList = data;
+                    } else if (type == "recipe") {
+                        vm.productList = [];
+                        var results = response.data.results;
+                        vm.totalProducts = response.data.totalResults;
+                        var baseUri = response.data.baseUri;
+                        for (var i = 0; i < results.length; ++i) {
+                            var recipe = results[i];
+                            recipe.image = baseUri + recipe.image;
+                            vm.productList.push(recipe);
+                        }
+                    }
                 });
             if (start === 0) showSearch(mid);
         }
