@@ -78,8 +78,6 @@
             <div>
                 <h4>Meals</h4>
                 <!--<a ng-click="model.addNewMeal()" ng-show="meal.mid==0" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i></a>-->
-                <a ng-click="model.addNewMeal()" class="btn btn-block btn-default">
-                    <i class="fa fa-plus" aria-hidden="true"></i> Add meal</a>
 
                 <form name="mealForm" novalidate>
                     <div ng-repeat="meal in model.mealPlan.meals" class="panel panel-default">
@@ -140,7 +138,7 @@
                                     <a class="btn btn-default"
                                        ng-click="model.searchProducts(model.offset-30, searchText, meal.mid, 0, 'recipe')"
                                        value="recipe">
-                                        Recipe <span ng-show="model.type=='recipe'" class="badge">{{model.totalProducts}}</span></a>
+                                        Recipe food <span ng-show="model.type=='recipe'" class="badge">{{model.totalProducts}}</span></a>
                                     <nav>
                                         <ul class="pager">
                                             <li><a ng-show="model.offset>0" ng-click="model.searchProducts(model.offset-30, searchText, meal.mid, 1, model.type)">Previous</a></li>
@@ -166,6 +164,8 @@
                         </div>
                     </div>
                 </form>
+                <a ng-click="model.addNewMeal()" class="btn btn-block btn-default">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Add meal</a>
             </div>
             <!-- end meal div -->
         </div>
